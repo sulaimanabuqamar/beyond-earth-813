@@ -1,0 +1,817 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tabarjal Irrigation Queue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#F3EEE3; --surface:#FBF8F1; --surface-2:#EAE3D4; --sunk:#E3DBC9;
+  --line:#D8CFBB; --line-soft:#E6DECD;
+  --ink:#1E1A12; --ink-2:#5A5245; --ink-3:#8B8271;
+  --accent:#1F6F8B; --accent-soft:#D8E8EE; --on-accent:#FFFFFF;
+  --healthy:#4E8B3C; --oncycle:#5583AE; --overdue:#A83A22; --offcycle:#BE8A22; --nodata:#B4AB99; --dormant:#7A6E8F;
+  --healthy-fill:rgba(78,139,60,.20); --oncycle-fill:rgba(85,131,174,.20);
+  --overdue-fill:rgba(168,58,34,.26); --offcycle-fill:rgba(190,138,34,.24); --dormant-fill:rgba(122,110,143,.20);
+  --map-bg:#E7DFCC; --map-grid:#D3C9B2;
+  --shadow:0 1px 2px rgba(31,26,18,.06),0 8px 24px rgba(31,26,18,.07);
+  --r:10px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#14120E; --surface:#1C1915; --surface-2:#24211A; --sunk:#100E0B;
+    --line:#383227; --line-soft:#2B261E;
+    --ink:#F3EEE2; --ink-2:#B5AC98; --ink-3:#847B6A;
+    --accent:#5DB3D2; --accent-soft:#17323C; --on-accent:#0C1418;
+    --healthy:#7FC061; --oncycle:#84B5DC; --overdue:#E4744F; --offcycle:#E8B455; --nodata:#6A6355; --dormant:#A99BC4;
+    --healthy-fill:rgba(127,192,97,.22); --oncycle-fill:rgba(132,181,220,.22);
+    --overdue-fill:rgba(228,116,79,.28); --offcycle-fill:rgba(232,180,85,.26); --dormant-fill:rgba(169,155,196,.24);
+    --map-bg:#1A1712; --map-grid:#2E2820;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#14120E; --surface:#1C1915; --surface-2:#24211A; --sunk:#100E0B;
+  --line:#383227; --line-soft:#2B261E;
+  --ink:#F3EEE2; --ink-2:#B5AC98; --ink-3:#847B6A;
+  --accent:#5DB3D2; --accent-soft:#17323C; --on-accent:#0C1418;
+  --healthy:#7FC061; --oncycle:#84B5DC; --overdue:#E4744F; --offcycle:#E8B455; --nodata:#6A6355; --dormant:#A99BC4;
+  --healthy-fill:rgba(127,192,97,.22); --oncycle-fill:rgba(132,181,220,.22);
+  --overdue-fill:rgba(228,116,79,.28); --offcycle-fill:rgba(232,180,85,.26); --dormant-fill:rgba(169,155,196,.24);
+  --map-bg:#1A1712; --map-grid:#2E2820;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{margin:0; text-wrap:balance}
+.num{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace; font-variant-numeric:tabular-nums}
+.wrap{max-width:1360px; margin:0 auto; padding-inline:16px}
+
+/* ---------- masthead ---------- */
+.masthead{
+  position:sticky; top:env(safe-area-inset-top,0px); z-index:20;
+  background:color-mix(in srgb,var(--surface) 92%,transparent);
+  backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+}
+.mast-in{display:flex; flex-wrap:wrap; align-items:center; gap:14px 20px; padding-block:12px}
+.brand{display:flex; flex-direction:column; gap:1px; margin-right:auto}
+.brand b{
+  font-family:Fraunces,Georgia,"Times New Roman",serif; font-weight:600;
+  font-size:19px; letter-spacing:-.01em; line-height:1.15;
+}
+.brand span{color:var(--ink-3); font-size:11.5px; letter-spacing:.06em; text-transform:uppercase}
+.mast-stats{display:flex; gap:18px; flex-wrap:wrap}
+.mstat{display:flex; flex-direction:column; gap:1px; min-width:64px}
+.mstat .v{font-size:18px; font-weight:600; line-height:1.1}
+.mstat .k{font-size:10.5px; color:var(--ink-3); letter-spacing:.05em; text-transform:uppercase}
+.themebtn{
+  background:var(--surface-2); border:1px solid var(--line); color:var(--ink-2);
+  border-radius:8px; padding:6px 10px; font:inherit; font-size:12px; cursor:pointer;
+}
+.themebtn:hover{color:var(--ink); border-color:var(--ink-3)}
+
+/* ---------- date scrubber ---------- */
+.scrub{
+  display:flex; align-items:center; gap:14px; padding-block:10px;
+  border-bottom:1px solid var(--line-soft); flex-wrap:wrap;
+}
+.scrub label{font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3)}
+.scrub input[type=range]{flex:1 1 260px; min-width:180px; accent-color:var(--accent)}
+.asof{font-size:15px; font-weight:600; min-width:104px}
+.scrub .hint{font-size:12px; color:var(--ink-3)}
+
+/* ---------- board ---------- */
+.board{display:grid; grid-template-columns:minmax(0,1.45fr) minmax(0,1fr); gap:16px; padding-block:16px}
+@media (max-width:920px){ .board{grid-template-columns:1fr} }
+.panel{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); box-shadow:var(--shadow); overflow:hidden}
+.panel-h{display:flex; align-items:baseline; gap:10px; padding:12px 14px 10px; border-bottom:1px solid var(--line-soft); flex-wrap:wrap}
+.panel-h h2{font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-2); font-weight:600}
+.panel-h .sub{font-size:12px; color:var(--ink-3); margin-left:auto}
+
+/* map */
+.mapbox{position:relative; background:var(--map-bg)}
+.mapbox svg{display:block; width:100%; height:auto}
+.legend{display:flex; flex-wrap:wrap; gap:10px 16px; padding:10px 14px; border-top:1px solid var(--line-soft); font-size:12px}
+.lg{display:flex; align-items:center; gap:6px; color:var(--ink-2)}
+.sw{width:12px; height:12px; border-radius:3px; border:1.5px solid}
+.scalebar{display:flex; align-items:center; gap:8px; margin-left:auto; color:var(--ink-3); font-size:11.5px}
+.scalebar i{display:block; height:3px; background:var(--ink-3); border-radius:2px}
+
+/* queue */
+.chips{display:flex; gap:6px; flex-wrap:wrap; padding:10px 14px 0}
+.chip{
+  border:1px solid var(--line); background:var(--surface-2); color:var(--ink-2);
+  border-radius:999px; padding:4px 10px; font:inherit; font-size:12px; cursor:pointer;
+  display:inline-flex; align-items:center; gap:6px;
+}
+.chip[aria-pressed="true"]{background:var(--accent-soft); border-color:var(--accent); color:var(--ink)}
+.chip .dot{width:8px; height:8px; border-radius:50%}
+.qscroll{max-height:430px; overflow:auto}
+table.q{width:100%; border-collapse:collapse; font-size:13px}
+table.q th{
+  position:sticky; top:0; background:var(--surface); z-index:1;
+  text-align:left; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--ink-3); font-weight:600; padding:8px 12px; border-bottom:1px solid var(--line);
+}
+table.q td{padding:8px 12px; border-bottom:1px solid var(--line-soft); vertical-align:middle}
+table.q tr{cursor:pointer}
+table.q tr:hover td{background:var(--surface-2)}
+table.q tr[aria-selected="true"] td{background:var(--accent-soft)}
+td.r{text-align:right}
+.pill{
+  display:inline-flex; align-items:center; gap:5px; border-radius:999px;
+  padding:2px 8px; font-size:11px; font-weight:500; border:1px solid; white-space:nowrap;
+}
+.spark{display:block; width:84px; height:22px}
+.empty{padding:26px 16px; color:var(--ink-3); font-size:13px; text-align:center}
+
+/* detail */
+.detail{padding:14px}
+.dhead{display:flex; align-items:flex-start; gap:12px; flex-wrap:wrap; margin-bottom:10px}
+.dhead h3{font-family:Fraunces,Georgia,serif; font-size:20px; font-weight:600}
+.dgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(88px,1fr)); gap:10px; margin:12px 0}
+.dcell .k{font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-3)}
+.dcell .v{font-size:16px; font-weight:600}
+.reason{background:var(--surface-2); border-left:3px solid var(--accent); border-radius:0 6px 6px 0; padding:9px 11px; font-size:13px; color:var(--ink-2)}
+.chartbox{position:relative; margin-top:12px}
+.chartbox svg{display:block; width:100%; height:auto}
+.tip{
+  position:absolute; pointer-events:none; opacity:0; transition:opacity .1s;
+  background:var(--ink); color:var(--bg); border-radius:6px; padding:5px 8px;
+  font-size:11.5px; white-space:nowrap; transform:translate(-50%,-130%); z-index:5;
+}
+.emit{margin-top:12px; border-top:1px solid var(--line-soft); padding-top:10px}
+.emit table{width:100%; border-collapse:collapse; font-size:12.5px}
+.emit th,.emit td{text-align:right; padding:4px 6px}
+.emit th:first-child,.emit td:first-child{text-align:left}
+.emit th{color:var(--ink-3); font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; font-weight:600}
+.caveat{margin-top:8px; font-size:12px; color:var(--ink-3)}
+
+/* proof */
+.proof{padding-block:4px 20px}
+.proof-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); box-shadow:var(--shadow); overflow:hidden}
+.proof-top{padding:16px 16px 12px; border-bottom:1px solid var(--line-soft)}
+.proof-top h2{font-family:Fraunces,Georgia,serif; font-size:23px; font-weight:600; letter-spacing:-.01em}
+.proof-top p{margin:8px 0 0; color:var(--ink-2); max-width:66ch}
+.bigline{display:flex; align-items:baseline; gap:10px; margin-top:12px; flex-wrap:wrap}
+.bigline .n{font-family:Fraunces,Georgia,serif; font-size:46px; font-weight:600; line-height:1; color:var(--overdue)}
+.bigline .t{font-size:14px; color:var(--ink-2); max-width:46ch}
+.cols{display:grid; grid-template-columns:1fr 1fr; gap:0}
+@media (max-width:760px){ .cols{grid-template-columns:1fr} }
+.col{padding:14px 16px}
+.col+.col{border-left:1px solid var(--line-soft)}
+@media (max-width:760px){ .col+.col{border-left:0; border-top:1px solid var(--line-soft)} }
+.col h3{font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-2); margin-bottom:2px}
+.col .csub{font-size:12px; color:var(--ink-3); margin-bottom:10px}
+ol.rank{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:3px}
+ol.rank li{display:flex; align-items:center; gap:8px; padding:5px 6px; border-radius:6px; font-size:12.5px; cursor:pointer}
+ol.rank li:hover{background:var(--surface-2)}
+ol.rank .idx{color:var(--ink-3); width:20px; text-align:right}
+ol.rank .fid{font-weight:500; width:58px}
+ol.rank .ha{color:var(--ink-3); width:58px; text-align:right}
+
+/* method */
+.method{padding-block:6px 28px; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px}
+.mcard{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:14px 16px}
+.mcard h3{font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-2); margin-bottom:8px}
+.mcard p{margin:0 0 8px; color:var(--ink-2); font-size:13px}
+.mcard p:last-child{margin-bottom:0}
+.mcard code{font-family:"IBM Plex Mono",monospace; font-size:12px; background:var(--surface-2); padding:1px 5px; border-radius:4px}
+.foot{padding-block:18px 32px; color:var(--ink-3); font-size:12px; border-top:1px solid var(--line-soft)}
+.foot a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
+</style>
+
+<header class="masthead"><div class="wrap mast-in">
+  <div class="brand">
+    <b>Tabarjal Irrigation Queue</b>
+    <span id="aoiLabel">Wadi as-Sirhan · Al Jouf · Saudi Arabia</span>
+  </div>
+  <div class="mast-stats" id="mastStats"></div>
+  <button class="themebtn" id="themeBtn" type="button">Dark</button>
+</div></header>
+
+<div class="wrap">
+  <div class="scrub">
+    <label for="asof">As of</label>
+    <span class="asof num" id="asofLabel">—</span>
+    <input type="range" id="asof" min="0" max="0" value="0" step="1" aria-label="Assessment date">
+    <span class="hint" id="scrubHint">Drag to re-run the assessment on any observed date.</span>
+  </div>
+</div>
+
+<main class="wrap">
+  <div id="loadState" class="panel" style="padding:26px 20px">
+    <h2 style="font-size:16px;margin-bottom:8px">Loading field data…</h2>
+    <p style="color:var(--ink-3);font-size:13px;margin:0">
+      Reading <code>tabarjal.json</code> produced by the pipeline notebook.
+    </p>
+  </div>
+
+  <div id="app" hidden>
+    <section class="board">
+      <div class="panel">
+        <div class="panel-h">
+          <h2>Detected pivots</h2>
+          <span class="sub" id="mapSub"></span>
+        </div>
+        <div class="mapbox"><svg id="map" viewBox="0 0 1000 800" role="img" aria-label="Map of detected centre-pivot fields, coloured by status."></svg></div>
+        <div class="legend" id="legend"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-h"><h2>Inspection queue</h2><span class="sub" id="queueSub"></span></div>
+        <div class="chips" id="chips"></div>
+        <div class="qscroll">
+          <table class="q">
+            <thead><tr><th>#</th><th>Field</th><th>Status</th><th class="r">Ha</th><th class="r">Deficit</th><th>Recent NDVI</th></tr></thead>
+            <tbody id="queueBody"></tbody>
+          </table>
+          <div class="empty" id="queueEmpty" hidden>No field is behind its own cycle on this date.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="board" style="grid-template-columns:1fr">
+      <div class="panel" id="detailPanel" hidden>
+        <div class="panel-h"><h2>Field detail</h2><span class="sub">Click any field on the map or in the queue</span></div>
+        <div class="detail" id="detail"></div>
+      </div>
+    </section>
+
+    <section class="proof">
+      <div class="proof-card">
+        <div class="proof-top">
+          <h2>What a plain decline ranking would have told you</h2>
+          <p>Same fields, same date, two orderings. The left column ranks by raw NDVI change over the previous 30 days. The right column ranks by how far each field has fallen behind its own cutting cycle.</p>
+          <div class="bigline"><span class="n num" id="mownCount">—</span><span class="t" id="mownText"></span></div>
+        </div>
+        <div class="cols">
+          <div class="col">
+            <h3>Ranked by NDVI decline</h3>
+            <div class="csub">Steepest fall first — the conventional approach</div>
+            <ol class="rank" id="naiveList"></ol>
+          </div>
+          <div class="col">
+            <h3>Ranked by cycle deficit</h3>
+            <div class="csub">Furthest behind its own history first — this tool</div>
+            <ol class="rank" id="oursList"></ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="method">
+      <div class="mcard">
+        <h3>How a field is judged</h3>
+        <p>A regrowth peak counts only if it stands <code>0.20</code> NDVI above the low points on both sides. The field's cycle is the median spacing between its peaks, bounded to 18–60 days.</p>
+        <p>Expected NDVI at day <i>d</i> of the cycle is the median of what <b>this same field</b> read <i>d</i>&nbsp;±&nbsp;3 days after each of its previous cuts.</p>
+        <p><code>priority = deficit × hectares</code>, and exactly zero when a field is on schedule — so a freshly cut field can never enter the queue.</p>
+      </div>
+      <div class="mcard">
+        <h3>Data and screening</h3>
+        <p id="methodData">—</p>
+        <p>Cloud, shadow and snow removed via the scene classification layer (classes 0, 1, 3, 8, 9, 10, 11). A field-date is kept only when more than 60% of that field's pixels survive screening.</p>
+      </div>
+      <div class="mcard">
+        <h3>Hyperspectral</h3>
+        <p>EMIT narrow-band indices are shown per field where a scene covers it, as <b>measurement</b>. They rank nothing.</p>
+        <p>On this dataset they improved a random-fold comparison by +0.12 AUC but made prediction <b>worse</b> on a held-out scene. Two scenes cannot separate physiology from acquisition conditions.</p>
+      </div>
+    </section>
+
+    <div class="foot" id="foot"></div>
+  </div>
+</main>
+
+<script>
+(function () {
+  "use strict";
+
+  var LOW = 0.45, HIGH = 0.70;
+  var MIN_PROM = 0.20, MIN_CYCLE = 18, MAX_CYCLE = 60, DEFAULT_CYCLE = 30, OVERDUE = 1.30, DORMANT = 3.0;
+
+  var STATUS = {
+    healthy:      { label: "Healthy",     color: "var(--healthy)",  fill: "var(--healthy-fill)" },
+    recently_cut: { label: "On cycle",    color: "var(--oncycle)",  fill: "var(--oncycle-fill)" },
+    overdue:      { label: "Overdue",     color: "var(--overdue)",  fill: "var(--overdue-fill)" },
+    dormant:      { label: "Out of rotation", color: "var(--dormant)", fill: "var(--dormant-fill)" },
+    off_cycle:    { label: "Off cycle",   color: "var(--offcycle)", fill: "var(--offcycle-fill)" },
+    no_data:      { label: "No data",     color: "var(--nodata)",   fill: "transparent" }
+  };
+
+  var D = null, dayIdx = [], asOf = 0, filter = null, selected = null;
+
+  /* ---------- theme ---------- */
+  var btn = document.getElementById("themeBtn");
+  function currentDark() {
+    var t = document.documentElement.getAttribute("data-theme");
+    if (t) return t === "dark";
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+  function syncBtn() { btn.textContent = currentDark() ? "Light" : "Dark"; }
+  btn.addEventListener("click", function () {
+    document.documentElement.setAttribute("data-theme", currentDark() ? "light" : "dark");
+    syncBtn(); draw();
+  });
+  syncBtn();
+
+  /* ---------- model ---------- */
+  /* Python's round() breaks exact halves to even. Match it, so the number the
+     dashboard shows and the number the API returns are the same number. */
+  function rnd(x, dp) {
+    if (x === null || x === undefined || !isFinite(x)) return x;
+    var f = Math.pow(10, dp), y = x * f, fl = Math.floor(y), diff = y - fl, n;
+    if (diff > 0.5) n = fl + 1;
+    else if (diff < 0.5) n = fl;
+    else n = (fl % 2 === 0) ? fl : fl + 1;
+    return n / f;
+  }
+
+  function findPeaks(v, day) {
+    var idx = [], i;
+    for (i = 0; i < v.length; i++) if (v[i] !== null && isFinite(v[i])) idx.push(i);
+    if (idx.length < 3) return [];
+    var cand = [];
+    for (i = 1; i < idx.length - 1; i++) {
+      var a = v[idx[i - 1]], b = v[idx[i]], c = v[idx[i + 1]];
+      if (b >= a && b >= c) cand.push(i);
+    }
+    var peaks = [];
+    cand.forEach(function (i) {
+      var leftMin = Infinity, rightMin = Infinity, j;
+      for (j = 0; j < i; j++) leftMin = Math.min(leftMin, v[idx[j]]);
+      for (j = i + 1; j < idx.length; j++) rightMin = Math.min(rightMin, v[idx[j]]);
+      if (!isFinite(leftMin) || !isFinite(rightMin)) return;
+      var prom = Math.min(v[idx[i]] - leftMin, v[idx[i]] - rightMin);
+      if (prom >= MIN_PROM) peaks.push(idx[i]);
+    });
+    var merged = [];
+    peaks.forEach(function (p) {
+      if (merged.length && day[p] - day[merged[merged.length - 1]] < MIN_CYCLE) {
+        if (v[p] > v[merged[merged.length - 1]]) merged[merged.length - 1] = p;
+      } else merged.push(p);
+    });
+    return merged;
+  }
+
+  function median(a) {
+    if (!a.length) return null;
+    var s = a.slice().sort(function (x, y) { return x - y; });
+    var m = Math.floor(s.length / 2);
+    return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
+  }
+
+  function estimateCycle(peaks, day) {
+    if (peaks.length < 2) return null;
+    var gaps = [];
+    for (var i = 1; i < peaks.length; i++) {
+      var g = day[peaks[i]] - day[peaks[i - 1]];
+      if (g >= MIN_CYCLE && g <= MAX_CYCLE) gaps.push(g);
+    }
+    return gaps.length ? median(gaps) : null;
+  }
+
+  function expectedAtPhase(v, day, peaks, phase) {
+    if (peaks.length < 2) return null;
+    var samples = [];
+    for (var k = 0; k < peaks.length - 1; k++) {
+      var t0 = day[peaks[k]], vals = [];
+      for (var i = 0; i < v.length; i++) {
+        if (v[i] === null) continue;
+        if (day[i] >= t0 + phase - 3 && day[i] <= t0 + phase + 3) vals.push(v[i]);
+      }
+      var m = median(vals);
+      if (m !== null) samples.push(m);
+    }
+    return median(samples);
+  }
+
+  function assess(f, upto) {
+    var series = D.ndvi[String(f.id)] || [];
+    var v = [], day = [];
+    for (var i = 0; i <= upto; i++) {
+      v.push(series[i] === null || series[i] === undefined ? null : series[i] / 1000);
+      day.push(dayIdx[i]);
+    }
+    var last = -1;
+    for (i = v.length - 1; i >= 0; i--) if (v[i] !== null) { last = i; break; }
+    if (last < 0) {
+      return { id: f.id, ha: f.ha, ndvi: null, expected: null, deficit: null, cycle: null,
+               since: null, nCycles: 0, status: "no_data", priority: 0,
+               reason: "No cloud-free observation in the window." };
+    }
+    var now = v[last];
+    var peaks = findPeaks(v, day);
+    var cycle = estimateCycle(peaks, day);
+    var cycleUsed = cycle === null ? DEFAULT_CYCLE : cycle;
+    var since = peaks.length ? Math.round(day[last] - day[peaks[peaks.length - 1]]) : null;
+    var expected = since === null ? null : expectedAtPhase(v, day, peaks, since);
+    var deficit = expected === null ? null : rnd(expected - now, 4);
+
+    var status, reason;
+    if (now >= HIGH) {
+      status = "healthy";
+      reason = "Full canopy (NDVI " + now.toFixed(2) + "). Nothing to do.";
+    } else if (since === null) {
+      status = now < LOW ? "off_cycle" : "healthy";
+      reason = "Below " + LOW.toFixed(2) + " but no complete cycle observed yet — a watch item, not a call.";
+    } else if (now < LOW && since > DORMANT * cycleUsed) {
+      status = "dormant";
+      reason = "Down for " + since + " days — more than three of its own " + Math.round(cycleUsed)
+             + "-day cycles — with no regrowth. This field is out of rotation, not late.";
+    } else if (now < LOW && since > OVERDUE * cycleUsed) {
+      status = "overdue";
+      reason = "Cut " + since + " days ago on a " + Math.round(cycleUsed) + "-day cycle and still at NDVI "
+             + now.toFixed(2) + ". It should have regrown by now — inspect.";
+    } else if (now < LOW) {
+      status = "recently_cut";
+      reason = "Cut " + since + " days ago on a " + Math.round(cycleUsed)
+             + "-day cycle. The drop is on schedule — this is harvest, not stress.";
+    } else if (deficit !== null && deficit > 0.15) {
+      status = "off_cycle";
+      reason = "NDVI " + now.toFixed(2) + " against " + expected.toFixed(2) + " typical for day " + since
+             + " of its own cycle — " + deficit.toFixed(2) + " below where this field normally sits.";
+    } else {
+      status = "healthy";
+      reason = "Tracking its own cycle within tolerance.";
+    }
+
+    // An overdue field must always rank, even when its history is too short to give an
+    // expected value — otherwise the most urgent status vanishes on a technicality.
+    var priority = 0;
+    if (status === "overdue") {
+      var gap = (deficit !== null && deficit > 0) ? deficit : Math.max(0, LOW - now);
+      priority = rnd(gap * f.ha, 2);
+    } else if (status === "off_cycle" && deficit && deficit > 0) {
+      priority = rnd(deficit * f.ha, 2);
+    }
+    return { id: f.id, ha: f.ha, ndvi: now, expected: expected, deficit: deficit,
+             cycle: cycle === null ? null : cycleUsed, since: since, nCycles: Math.max(0, peaks.length - 1),
+             status: status, priority: priority, reason: reason, lastIdx: last, peaks: peaks, v: v, day: day };
+  }
+
+  function naiveDecline(upto) {
+    var cutoff = dayIdx[upto], start = cutoff - 30, out = [];
+    D.fields.forEach(function (f) {
+      var s = D.ndvi[String(f.id)] || [], a = [], b = [];
+      for (var i = 0; i <= upto; i++) {
+        if (s[i] === null || s[i] === undefined) continue;
+        var d = dayIdx[i], val = s[i] / 1000;
+        if (d >= start - 5 && d <= start + 5) a.push(val);
+        if (d >= cutoff - 5 && d <= cutoff) b.push(val);
+      }
+      var ma = median(a), mb = median(b);
+      if (ma === null || mb === null) return;
+      out.push({ id: f.id, ha: f.ha, change: mb - ma });
+    });
+    out.sort(function (x, y) { return x.change - y.change; });
+    return out;
+  }
+
+  /* ---------- projection ---------- */
+  var proj = null;
+  function buildProjection() {
+    var minx = Infinity, miny = Infinity, maxx = -Infinity, maxy = -Infinity;
+    D.fields.forEach(function (f) {
+      f.p.forEach(function (pt) {
+        if (pt[0] < minx) minx = pt[0];
+        if (pt[0] > maxx) maxx = pt[0];
+        if (pt[1] < miny) miny = pt[1];
+        if (pt[1] > maxy) maxy = pt[1];
+      });
+    });
+    var midLat = (miny + maxy) / 2, k = Math.cos(midLat * Math.PI / 180);
+    var w = (maxx - minx) * k, h = (maxy - miny);
+    var pad = 24, W = 1000, H = 800;
+    var s = Math.min((W - 2 * pad) / w, (H - 2 * pad) / h);
+    var ox = (W - w * s) / 2, oy = (H - h * s) / 2;
+    proj = {
+      minx: minx, miny: miny, maxy: maxy, k: k, s: s, ox: ox, oy: oy,
+      x: function (lon) { return ox + (lon - minx) * k * s; },
+      y: function (lat) { return oy + (maxy - lat) * s; },
+      kmPerUnit: 111.32
+    };
+  }
+
+  /* ---------- rendering ---------- */
+  function fmt(n, d) { return n === null || n === undefined ? "—" : Number(n).toFixed(d === undefined ? 2 : d); }
+
+  function sparkline(a) {
+    var pts = [], n = a.v.length, seen = 0;
+    var from = Math.max(0, n - 24);
+    for (var i = from; i < n; i++) if (a.v[i] !== null) seen++;
+    if (seen < 2) return "";
+    var w = 84, h = 22, span = dayIdx[n - 1] - dayIdx[from] || 1;
+    for (i = from; i < n; i++) {
+      if (a.v[i] === null) continue;
+      var x = ((dayIdx[i] - dayIdx[from]) / span) * (w - 2) + 1;
+      var y = h - 2 - Math.max(0, Math.min(1, a.v[i])) * (h - 4);
+      pts.push(x.toFixed(1) + "," + y.toFixed(1));
+    }
+    var col = STATUS[a.status].color;
+    return '<svg class="spark" viewBox="0 0 ' + w + ' ' + h + '" aria-hidden="true">'
+         + '<polyline points="' + pts.join(" ") + '" fill="none" stroke="' + col + '" stroke-width="1.5" stroke-linejoin="round"/>'
+         + '</svg>';
+  }
+
+  function pill(status) {
+    var s = STATUS[status];
+    return '<span class="pill" style="color:' + s.color + ';border-color:' + s.color + ';background:' + s.fill + '">'
+         + '<span style="width:6px;height:6px;border-radius:50%;background:' + s.color + '"></span>' + s.label + '</span>';
+  }
+
+  function drawMap(assessed) {
+    var svg = document.getElementById("map");
+    var parts = [];
+    // graticule
+    for (var gx = 0; gx <= 1000; gx += 125) parts.push('<line x1="' + gx + '" y1="0" x2="' + gx + '" y2="800" stroke="var(--map-grid)" stroke-width="1"/>');
+    for (var gy = 0; gy <= 800; gy += 100) parts.push('<line x1="0" y1="' + gy + '" x2="1000" y2="' + gy + '" stroke="var(--map-grid)" stroke-width="1"/>');
+
+    D.fields.forEach(function (f) {
+      var a = assessed[f.id];
+      if (filter && a.status !== filter) return;
+      var s = STATUS[a.status];
+      var d = "M" + f.p.map(function (pt) { return proj.x(pt[0]).toFixed(1) + " " + proj.y(pt[1]).toFixed(1); }).join(" L") + "Z";
+      var stroke = (a.status === "overdue") ? 2.2 : (a.status === "off_cycle" ? 1.6 : 0.9);
+      var sel = selected === f.id;
+      parts.push('<path d="' + d + '" fill="' + s.fill + '" stroke="' + (sel ? "var(--accent)" : s.color) + '" stroke-width="' + (sel ? 3 : stroke) + '" data-id="' + f.id + '"><title>Field ' + f.id + ' · ' + f.ha + ' ha · ' + s.label + '</title></path>');
+    });
+    // scale bar: 10 km
+    var px10 = 10 / proj.kmPerUnit * proj.k * proj.s;
+    parts.push('<g><line x1="30" y1="772" x2="' + (30 + px10).toFixed(0) + '" y2="772" stroke="var(--ink-3)" stroke-width="3"/>'
+      + '<text x="' + (34 + px10).toFixed(0) + '" y="776" font-size="13" fill="var(--ink-3)" font-family="IBM Plex Mono, monospace">10 km</text></g>');
+    svg.innerHTML = parts.join("");
+    svg.querySelectorAll("path[data-id]").forEach(function (p) {
+      p.style.cursor = "pointer";
+      p.addEventListener("click", function () { select(Number(p.getAttribute("data-id")), assessed); });
+    });
+  }
+
+  function drawLegend(counts) {
+    var order = ["overdue", "off_cycle", "recently_cut", "healthy", "dormant", "no_data"];
+    var html = order.map(function (k) {
+      var s = STATUS[k], n = counts[k] || 0;
+      return '<span class="lg"><span class="sw" style="background:' + s.fill + ';border-color:' + s.color + '"></span>'
+           + s.label + ' <span class="num" style="color:var(--ink-3)">' + n + '</span></span>';
+    }).join("");
+    document.getElementById("legend").innerHTML = html
+      + '<span class="scalebar"><i style="width:36px"></i>colour = status · thicker outline = needs attention</span>';
+  }
+
+  function drawChips(counts) {
+    var order = ["overdue", "off_cycle", "recently_cut", "healthy", "dormant"];
+    var host = document.getElementById("chips");
+    host.innerHTML = '<button class="chip" data-f="" aria-pressed="' + (filter === null) + '">All fields</button>'
+      + order.map(function (k) {
+        var s = STATUS[k];
+        return '<button class="chip" data-f="' + k + '" aria-pressed="' + (filter === k) + '">'
+             + '<span class="dot" style="background:' + s.color + '"></span>' + s.label
+             + ' <span class="num" style="color:var(--ink-3)">' + (counts[k] || 0) + '</span></button>';
+      }).join("");
+    host.querySelectorAll(".chip").forEach(function (c) {
+      c.addEventListener("click", function () {
+        var v = c.getAttribute("data-f");
+        filter = v === "" ? null : (filter === v ? null : v);
+        draw();
+      });
+    });
+  }
+
+  function drawQueue(list, assessed) {
+    var body = document.getElementById("queueBody");
+    var rows = list.filter(function (a) { return filter ? a.status === filter : a.priority > 0; });
+    document.getElementById("queueEmpty").hidden = rows.length > 0;
+    body.innerHTML = rows.slice(0, 200).map(function (a, i) {
+      return '<tr data-id="' + a.id + '" aria-selected="' + (selected === a.id) + '">'
+        + '<td class="num" style="color:var(--ink-3)">' + (a.priority > 0 ? (i + 1) : "—") + '</td>'
+        + '<td class="num">' + a.id + '</td>'
+        + '<td>' + pill(a.status) + '</td>'
+        + '<td class="r num">' + a.ha.toFixed(0) + '</td>'
+        + '<td class="r num">' + (a.deficit === null ? "—" : a.deficit.toFixed(2)) + '</td>'
+        + '<td>' + sparkline(a) + '</td></tr>';
+    }).join("");
+    body.querySelectorAll("tr").forEach(function (tr) {
+      tr.addEventListener("click", function () { select(Number(tr.getAttribute("data-id")), assessed); });
+    });
+    var q = list.filter(function (a) { return a.priority > 0; });
+    var ha = q.reduce(function (s, a) { return s + a.ha; }, 0);
+    document.getElementById("queueSub").textContent = q.length + " fields flagged · " + ha.toFixed(0) + " ha";
+  }
+
+  function select(id, assessed) {
+    selected = id;
+    var a = assessed[id];
+    var f = D.fields.filter(function (x) { return x.id === id; })[0];
+    var panel = document.getElementById("detailPanel");
+    panel.hidden = false;
+
+    var emitRows = (D.emit || []).filter(function (r) { return r.id === id; });
+    var emitHtml = "";
+    if (emitRows.length) {
+      emitHtml = '<div class="emit"><table><thead><tr><th>EMIT scene</th><th>PRI</th><th>REP nm</th><th>D970</th><th>NDWI</th><th>NDVI</th></tr></thead><tbody>'
+        + emitRows.map(function (r) {
+            return '<tr><td class="num">' + r.d + '</td><td class="num">' + fmt(r.PRI, 3) + '</td><td class="num">'
+              + fmt(r.REP, 1) + '</td><td class="num">' + fmt(r.D970, 3) + '</td><td class="num">'
+              + fmt(r.NDWI, 3) + '</td><td class="num">' + fmt(r.NDVI, 3) + '</td></tr>';
+          }).join("")
+        + '</tbody></table><p class="caveat">Narrow-band measurement only. These values rank nothing — on this dataset they did not transfer to an unseen scene.</p></div>';
+    }
+
+    document.getElementById("detail").innerHTML =
+      '<div class="dhead"><h3>Field ' + id + '</h3>' + pill(a.status)
+      + '<span style="margin-left:auto;color:var(--ink-3);font-size:13px" class="num">' + f.ha.toFixed(1) + ' ha · '
+      + f.c[1].toFixed(4) + '°N ' + f.c[0].toFixed(4) + '°E</span></div>'
+      + '<div class="reason">' + a.reason + '</div>'
+      + '<div class="dgrid">'
+      + cell("NDVI now", fmt(a.ndvi)) + cell("Expected", fmt(a.expected)) + cell("Deficit", fmt(a.deficit))
+      + cell("Cycle", a.cycle === null ? "not observed" : Math.round(a.cycle) + " d")
+      + cell("Since cut", a.since === null ? "—" : a.since + " d")
+      + cell("Cycles seen", String(a.nCycles))
+      + cell("Priority", a.priority ? a.priority.toFixed(1) : "0")
+      + '</div>'
+      + '<div class="chartbox">' + historyChart(a) + '<div class="tip" id="tip"></div></div>'
+      + emitHtml;
+
+    wireChart(a);
+    draw(true);
+    panel.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }
+
+  function cell(k, v) {
+    return '<div class="dcell"><div class="k">' + k + '</div><div class="v num">' + v + '</div></div>';
+  }
+
+  function historyChart(a) {
+    var W = 900, H = 220, L = 42, R = 14, T = 14, B = 26;
+    var n = a.v.length, span = dayIdx[n - 1] - dayIdx[0] || 1;
+    function X(i) { return L + ((dayIdx[i] - dayIdx[0]) / span) * (W - L - R); }
+    function Y(v) { return T + (1 - Math.max(0, Math.min(1, v))) * (H - T - B); }
+
+    var p = [], area = [], started = false;
+    for (var i = 0; i < n; i++) {
+      if (a.v[i] === null) continue;
+      p.push((started ? "L" : "M") + X(i).toFixed(1) + " " + Y(a.v[i]).toFixed(1));
+      started = true;
+    }
+    var g = [];
+    g.push('<rect x="' + L + '" y="' + Y(HIGH).toFixed(1) + '" width="' + (W - L - R) + '" height="' + (Y(0) - Y(HIGH)).toFixed(1) + '" fill="none"/>');
+    g.push('<rect x="' + L + '" y="' + T + '" width="' + (W - L - R) + '" height="' + (Y(HIGH) - T).toFixed(1) + '" fill="var(--healthy)" opacity="0.07"/>');
+    g.push('<rect x="' + L + '" y="' + Y(LOW).toFixed(1) + '" width="' + (W - L - R) + '" height="' + (Y(0) - Y(LOW)).toFixed(1) + '" fill="var(--overdue)" opacity="0.07"/>');
+    [0, 0.25, 0.5, 0.75, 1].forEach(function (t) {
+      g.push('<line x1="' + L + '" y1="' + Y(t).toFixed(1) + '" x2="' + (W - R) + '" y2="' + Y(t).toFixed(1) + '" stroke="var(--line-soft)" stroke-width="1"/>');
+      g.push('<text x="' + (L - 7) + '" y="' + (Y(t) + 4).toFixed(1) + '" text-anchor="end" font-size="11" fill="var(--ink-3)" font-family="IBM Plex Mono, monospace">' + t.toFixed(2) + '</text>');
+    });
+    a.peaks.forEach(function (pi) {
+      g.push('<line x1="' + X(pi).toFixed(1) + '" y1="' + T + '" x2="' + X(pi).toFixed(1) + '" y2="' + Y(0).toFixed(1) + '" stroke="var(--ink-3)" stroke-width="1" stroke-dasharray="2 5" opacity="0.7"/>');
+      g.push('<circle cx="' + X(pi).toFixed(1) + '" cy="' + Y(a.v[pi]).toFixed(1) + '" r="3.5" fill="var(--ink-3)"/>');
+    });
+    (D.emit || []).forEach(function (r) {
+      var k = D.dates.indexOf(r.d);
+      if (k < 0 || k >= n) return;
+      g.push('<line x1="' + X(k).toFixed(1) + '" y1="' + T + '" x2="' + X(k).toFixed(1) + '" y2="' + Y(0).toFixed(1) + '" stroke="var(--accent)" stroke-width="1.5" opacity="0.5"/>');
+    });
+    g.push('<path d="' + p.join(" ") + '" fill="none" stroke="' + STATUS[a.status].color + '" stroke-width="2" stroke-linejoin="round"/>');
+    g.push('<circle cx="' + X(a.lastIdx).toFixed(1) + '" cy="' + Y(a.v[a.lastIdx]).toFixed(1) + '" r="5" fill="' + STATUS[a.status].color + '" stroke="var(--surface)" stroke-width="2"/>');
+    [0, Math.floor(n / 2), n - 1].forEach(function (i) {
+      g.push('<text x="' + X(i).toFixed(1) + '" y="' + (H - 6) + '" text-anchor="middle" font-size="11" fill="var(--ink-3)" font-family="IBM Plex Mono, monospace">' + D.dates[i].slice(5) + '</text>');
+    });
+    return '<svg viewBox="0 0 ' + W + ' ' + H + '" id="hist" role="img" aria-label="NDVI history for field '
+         + a.id + ' with detected cuts marked.">' + g.join("") + '</svg>'
+         + '<div style="display:flex;gap:16px;flex-wrap:wrap;padding-top:6px;font-size:12px;color:var(--ink-3)">'
+         + '<span>dashed — detected cut</span><span style="color:var(--accent)">vertical — EMIT scene</span>'
+         + '<span>bands — healthy above ' + HIGH.toFixed(2) + ', low below ' + LOW.toFixed(2) + '</span></div>';
+  }
+
+  function wireChart(a) {
+    var svg = document.getElementById("hist"), tip = document.getElementById("tip");
+    if (!svg || !tip) return;
+    var n = a.v.length, W = 900, L = 42, R = 14, span = dayIdx[n - 1] - dayIdx[0] || 1;
+    svg.addEventListener("mousemove", function (e) {
+      var box = svg.getBoundingClientRect();
+      var rel = (e.clientX - box.left) / box.width * W;
+      var best = -1, bd = Infinity;
+      for (var i = 0; i < n; i++) {
+        if (a.v[i] === null) continue;
+        var x = L + ((dayIdx[i] - dayIdx[0]) / span) * (W - L - R);
+        var d = Math.abs(x - rel);
+        if (d < bd) { bd = d; best = i; }
+      }
+      if (best < 0) return;
+      tip.style.opacity = 1;
+      tip.style.left = ((L + ((dayIdx[best] - dayIdx[0]) / span) * (W - L - R)) / W * 100) + "%";
+      tip.style.top = (box.height * (1 - a.v[best]) * 0.86) + "px";
+      tip.textContent = D.dates[best] + " · NDVI " + a.v[best].toFixed(3);
+    });
+    svg.addEventListener("mouseleave", function () { tip.style.opacity = 0; });
+  }
+
+  function drawComparison(list, assessed) {
+    var naive = naiveDecline(asOf).slice(0, 20);
+    var ours = list.filter(function (a) { return a.priority > 0; }).slice(0, 20);
+    var mown = naive.filter(function (r) { return assessed[r.id].status === "recently_cut"; });
+
+    document.getElementById("mownCount").textContent = mown.length;
+    document.getElementById("mownText").textContent =
+      "of the top 20 fields by NDVI decline on this date had simply been harvested on schedule. "
+      + "A decline-ranked queue would have sent water to every one of them.";
+
+    function row(id, ha, i, tag) {
+      var a = assessed[id], s = STATUS[a.status];
+      return '<li data-id="' + id + '"><span class="idx num">' + (i + 1) + '</span>'
+           + '<span class="dot" style="width:8px;height:8px;border-radius:50%;background:' + s.color + ';flex:none"></span>'
+           + '<span class="fid num">' + id + '</span>'
+           + '<span style="color:' + s.color + '">' + s.label + '</span>'
+           + '<span class="ha num">' + ha.toFixed(0) + ' ha</span></li>';
+    }
+    document.getElementById("naiveList").innerHTML = naive.map(function (r, i) { return row(r.id, r.ha, i); }).join("");
+    document.getElementById("oursList").innerHTML = ours.map(function (a, i) { return row(a.id, a.ha, i); }).join("");
+    document.querySelectorAll("ol.rank li").forEach(function (li) {
+      li.addEventListener("click", function () { select(Number(li.getAttribute("data-id")), assessed); });
+    });
+  }
+
+  function draw(skipDetail) {
+    var assessed = {}, list = [];
+    D.fields.forEach(function (f) {
+      var a = assess(f, asOf);
+      assessed[f.id] = a;
+      list.push(a);
+    });
+    list.sort(function (x, y) { return (y.priority - x.priority) || (y.ha - x.ha); });
+
+    var counts = {};
+    list.forEach(function (a) { counts[a.status] = (counts[a.status] || 0) + 1; });
+
+    document.getElementById("asofLabel").textContent = D.dates[asOf];
+    document.getElementById("mapSub").textContent = D.fields.length + " fields · " + D.meta.ha_total.toLocaleString() + " ha";
+
+    var flagged = list.filter(function (a) { return a.priority > 0; });
+    var haFlag = flagged.reduce(function (s, a) { return s + a.ha; }, 0);
+    document.getElementById("mastStats").innerHTML =
+      stat(D.fields.length, "Fields") + stat(counts.overdue || 0, "Overdue")
+      + stat(counts.recently_cut || 0, "On cycle") + stat(flagged.length, "In queue")
+      + stat(haFlag.toFixed(0), "Ha flagged");
+
+    drawLegend(counts);
+    drawChips(counts);
+    drawMap(assessed);
+    drawQueue(list, assessed);
+    drawComparison(list, assessed);
+    if (!skipDetail && selected === null && flagged.length) select(flagged[0].id, assessed);
+  }
+
+  function stat(v, k) {
+    return '<div class="mstat"><div class="v num">' + v + '</div><div class="k">' + k + '</div></div>';
+  }
+
+  /* ---------- boot ---------- */
+  fetch("tabarjal.json").then(function (r) {
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    return r.json();
+  }).then(function (json) {
+    D = json;
+    var d0 = new Date(D.dates[0] + "T00:00:00Z").getTime();
+    dayIdx = D.dates.map(function (s) {
+      return Math.round((new Date(s + "T00:00:00Z").getTime() - d0) / 86400000);
+    });
+    asOf = D.dates.length - 1;
+    buildProjection();
+
+    var slider = document.getElementById("asof");
+    slider.max = String(D.dates.length - 1);
+    slider.value = String(asOf);
+    slider.addEventListener("input", function () { asOf = Number(slider.value); selected = null; draw(); });
+
+    document.getElementById("aoiLabel").textContent =
+      "Wadi as-Sirhan · Al Jouf · " + D.meta.season[0] + " to " + D.meta.season[1];
+    document.getElementById("methodData").textContent =
+      "Sentinel-2 L2A, " + D.meta.n_days + " usable days, " + D.meta.n_obs.toLocaleString()
+      + " field-days. Pivots detected at " + D.meta.res_field_m + " m; series sampled at "
+      + D.meta.res_series_m + " m.";
+    document.getElementById("foot").innerHTML =
+      "Copernicus Sentinel-2 L2A and NASA EMIT, both openly licensed. "
+      + D.meta.n_fields + " pivots, " + D.meta.ha_total.toLocaleString() + " ha, median "
+      + D.meta.ha_median + " ha. EMIT scenes: " + (D.meta.emit_scenes || []).join(", ")
+      + ". Screening result, not a diagnosis — see the methodology report.";
+
+    document.getElementById("loadState").hidden = true;
+    document.getElementById("app").hidden = false;
+    draw();
+  }).catch(function (err) {
+    document.getElementById("loadState").innerHTML =
+      '<h2 style="font-size:16px;margin-bottom:8px">No field data yet</h2>'
+      + '<p style="color:var(--ink-3);font-size:13px;margin:0 0 8px">This dashboard reads <code>tabarjal.json</code>, '
+      + 'written by the pipeline notebook. Put it beside this file and reload.</p>'
+      + '<p style="color:var(--ink-3);font-size:12px;margin:0">' + String(err.message || err) + '</p>';
+  });
+})();
+</script>

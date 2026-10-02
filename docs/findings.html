@@ -1,0 +1,357 @@
+<title>Harvest or Stress</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#F2EDE2; --surface:#FBF8F1; --surface-2:#E9E1D0; --line:#D6CDB8; --line-soft:#E3DACA;
+  --ink:#1D1910; --ink-2:#574F41; --ink-3:#8A8170;
+  --accent:#1F6F8B;
+  --healthy:#4E8B3C; --oncycle:#5583AE; --overdue:#A83A22; --offcycle:#BE8A22; --other:#B4AB99;
+  --shadow:0 1px 2px rgba(29,25,16,.05),0 10px 30px rgba(29,25,16,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#13110D; --surface:#1B1814; --surface-2:#231F18; --line:#37311F; --line-soft:#2A251D;
+    --ink:#F4EFE3; --ink-2:#B7AE9A; --ink-3:#867D6C;
+    --accent:#5DB3D2;
+    --healthy:#7FC061; --oncycle:#84B5DC; --overdue:#E4744F; --offcycle:#E8B455; --other:#6A6355;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#13110D; --surface:#1B1814; --surface-2:#231F18; --line:#37311F; --line-soft:#2A251D;
+  --ink:#F4EFE3; --ink-2:#B7AE9A; --ink-3:#867D6C;
+  --accent:#5DB3D2;
+  --healthy:#7FC061; --oncycle:#84B5DC; --overdue:#E4744F; --offcycle:#E8B455; --other:#6A6355;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+body{margin:0; background:var(--bg); color:var(--ink);
+  font-family:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,sans-serif;
+  font-size:16px; line-height:1.62; -webkit-font-smoothing:antialiased}
+.page{max-width:1120px; margin:0 auto; padding-inline:16px}
+.col{max-width:68ch}
+.num{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace; font-variant-numeric:tabular-nums}
+h1,h2,h3{margin:0; text-wrap:balance; font-family:Fraunces,Georgia,"Times New Roman",serif; font-weight:600; letter-spacing:-.012em}
+p{margin:0 0 1em}
+a{color:var(--accent)}
+
+/* masthead */
+header.top{border-bottom:1px solid var(--line); background:var(--surface)}
+.top-in{display:flex; align-items:baseline; gap:12px 22px; flex-wrap:wrap; padding-block:14px}
+.kicker{font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); font-weight:600}
+.top-in .right{margin-left:auto; font-size:12.5px; color:var(--ink-3)}
+
+/* hero */
+.hero{padding-block:44px 30px}
+.hero h1{font-size:clamp(34px,5.4vw,58px); line-height:1.04}
+.hero .lede{font-size:clamp(17px,2vw,20px); color:var(--ink-2); margin-top:16px; max-width:60ch}
+.meta{display:flex; flex-wrap:wrap; gap:8px 10px; margin-top:22px}
+.tag{font-size:12px; border:1px solid var(--line); background:var(--surface); color:var(--ink-2);
+  border-radius:999px; padding:4px 11px}
+
+/* stat strip */
+.strip{display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:1px;
+  background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden; margin-block:8px 40px}
+.stat{background:var(--surface); padding:16px 16px 14px}
+.stat .v{font-family:Fraunces,Georgia,serif; font-size:30px; font-weight:600; line-height:1; font-variant-numeric:tabular-nums}
+.stat .k{font-size:11px; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-3); margin-top:7px}
+
+/* sections */
+section{padding-block:34px; border-top:1px solid var(--line-soft)}
+section > .col > h2{font-size:clamp(23px,3vw,31px); margin-bottom:14px}
+section .eyebrow{font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:9px}
+.body-2{color:var(--ink-2)}
+
+/* figure */
+figure{margin:26px 0 0; background:var(--surface); border:1px solid var(--line); border-radius:12px;
+  box-shadow:var(--shadow); overflow:hidden}
+figure .fig-h{padding:14px 18px 0}
+figure .fig-h h3{font-size:16px}
+figure .fig-h p{font-size:13.5px; color:var(--ink-3); margin:5px 0 0; max-width:74ch}
+figure .plot{padding:14px 18px 6px}
+figure svg{display:block; width:100%; height:auto; overflow:visible}
+figcaption{padding:10px 18px 15px; font-size:12.5px; color:var(--ink-3); border-top:1px solid var(--line-soft); margin-top:10px}
+
+/* unit chart */
+.units{display:flex; flex-wrap:wrap; gap:16px 26px; padding:6px 18px 4px}
+.ugroup{flex:1 1 150px; min-width:140px}
+.ugroup .uh{display:flex; align-items:baseline; gap:7px; margin-bottom:7px}
+.ugroup .dotlab{width:9px; height:9px; border-radius:50%; flex:none; translate:0 -1px}
+.ugroup .un{font-family:Fraunces,Georgia,serif; font-size:22px; font-weight:600; line-height:1}
+.ugroup .ul{font-size:12px; color:var(--ink-2)}
+.grid-dots{display:grid; grid-template-columns:repeat(auto-fill,7px); gap:3px}
+.d{width:7px; height:7px; border-radius:50%}
+
+/* callout */
+.callout{background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--overdue);
+  border-radius:0 12px 12px 0; padding:18px 20px; margin:26px 0 0; box-shadow:var(--shadow)}
+.callout .big{font-family:Fraunces,Georgia,serif; font-size:clamp(26px,3.6vw,36px); font-weight:600; line-height:1.15; margin-bottom:8px}
+.callout p{margin:0; color:var(--ink-2)}
+
+/* tables */
+.tw{overflow-x:auto; margin-top:22px; border:1px solid var(--line); border-radius:12px; background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:460px}
+th,td{padding:10px 14px; text-align:right; border-bottom:1px solid var(--line-soft)}
+th:first-child,td:first-child{text-align:left}
+thead th{font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); font-weight:600;
+  background:var(--surface-2); border-bottom:1px solid var(--line)}
+tbody tr:last-child td{border-bottom:0}
+td.mono,th.mono{font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums}
+tr.win td{background:color-mix(in srgb,var(--healthy) 11%,transparent)}
+tr.lose td{background:color-mix(in srgb,var(--overdue) 10%,transparent)}
+.tnote{padding:10px 14px; font-size:12.5px; color:var(--ink-3); border-top:1px solid var(--line-soft)}
+
+/* two-up */
+.twoup{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:26px}
+@media (max-width:720px){.twoup{grid-template-columns:1fr}}
+.card{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:16px 18px}
+.card h3{font-size:15px; margin-bottom:7px}
+.card p{font-size:14px; color:var(--ink-2); margin:0}
+
+/* list */
+ul.clean{list-style:none; margin:18px 0 0; padding:0; display:flex; flex-direction:column; gap:12px}
+ul.clean li{display:flex; gap:12px; font-size:15px; color:var(--ink-2)}
+ul.clean li b{color:var(--ink); font-weight:600}
+ul.clean .n{font-family:"IBM Plex Mono",monospace; color:var(--ink-3); flex:none; width:22px; font-size:13px; padding-top:2px}
+
+footer{padding-block:28px 46px; border-top:1px solid var(--line); color:var(--ink-3); font-size:13px}
+footer p{max-width:74ch}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="top"><div class="page top-in">
+  <span class="kicker">Beyond Earth · 813 Challenge</span>
+  <span class="kicker" style="color:var(--ink-2)">Proof of Concept findings</span>
+  <span class="right">Wadi as-Sirhan, Al Jouf · Saudi Arabia · Feb–Sep 2026</span>
+</div></header>
+
+<main class="page">
+
+  <div class="hero col">
+    <h1>A satellite can see the crop is gone. It cannot see who took it.</h1>
+    <p class="lede">Alfalfa in Wadi as-Sirhan is cut every thirty days. A mown field and a dying field read almost identically from orbit — which means the obvious way to rank fields for irrigation sends water to the fields that least need it. We measured how often that happens, and built the fix.</p>
+    <div class="meta">
+      <span class="tag">Sentinel-2 L2A · open data</span>
+      <span class="tag">518 centre pivots, detected not drawn</span>
+      <span class="tag">82 cloud-screened days</span>
+      <span class="tag">EMIT hyperspectral, tested and reported</span>
+    </div>
+  </div>
+
+  <div class="strip">
+    <div class="stat"><div class="v num">518</div><div class="k">Pivots detected</div></div>
+    <div class="stat"><div class="v num">24,038</div><div class="k">Hectares</div></div>
+    <div class="stat"><div class="v num">82</div><div class="k">Usable days</div></div>
+    <div class="stat"><div class="v num">33,078</div><div class="k">Field-days</div></div>
+    <div class="stat"><div class="v num">47.8</div><div class="k">Median ha / field</div></div>
+  </div>
+
+  <section>
+    <div class="col">
+      <div class="eyebrow">The confound</div>
+      <h2>Vegetation here is a sawtooth, not a trend</h2>
+      <p class="body-2">Every cut drops a field from roughly 0.90 NDVI to roughly 0.35 within ten days. Then it regrows, and thirty days later it is cut again. On any given date a substantial share of fields are mid-cycle and look exactly like severe water stress.</p>
+      <p class="body-2">Rank by decline and you are not ranking by stress. You are ranking by <em>how recently the mower came through.</em></p>
+    </div>
+
+    <figure>
+      <div class="fig-h">
+        <h3>Why a single date cannot answer the question</h3>
+        <p>Schematic of the mechanism, drawn to the NDVI values and the ~30-day cadence measured in this study area. Two fields, identical on day 40; only what happens afterwards separates them.</p>
+      </div>
+      <div class="plot">
+        <svg viewBox="0 0 860 260" role="img" aria-label="Two NDVI trajectories that coincide at day 40 then diverge: one recovers after a cut, the other stays low.">
+          <defs>
+            <linearGradient id="gA" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="var(--oncycle)" stop-opacity=".22"/>
+              <stop offset="1" stop-color="var(--oncycle)" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- bands -->
+          <rect x="54" y="46" width="772" height="46" fill="var(--healthy)" opacity=".07"/>
+          <rect x="54" y="150" width="772" height="62" fill="var(--overdue)" opacity=".07"/>
+          <text x="820" y="62" text-anchor="end" font-size="11" fill="var(--ink-3)">healthy ≥ 0.70</text>
+          <text x="820" y="206" text-anchor="end" font-size="11" fill="var(--ink-3)">low &lt; 0.45</text>
+          <!-- axes -->
+          <line x1="54" y1="212" x2="826" y2="212" stroke="var(--line)" stroke-width="1"/>
+          <line x1="54" y1="30" x2="54" y2="212" stroke="var(--line)" stroke-width="1"/>
+          <text x="46" y="52" text-anchor="end" font-size="11" fill="var(--ink-3)" class="num">0.9</text>
+          <text x="46" y="134" text-anchor="end" font-size="11" fill="var(--ink-3)" class="num">0.6</text>
+          <text x="46" y="216" text-anchor="end" font-size="11" fill="var(--ink-3)" class="num">0.3</text>
+          <text x="20" y="128" text-anchor="middle" font-size="11" fill="var(--ink-3)" transform="rotate(-90 20 128)">NDVI</text>
+          <!-- day marks -->
+          <g font-size="11" fill="var(--ink-3)" text-anchor="middle" class="num">
+            <text x="54" y="232">day 0</text><text x="311" y="232">20</text>
+            <text x="440" y="232">40</text><text x="697" y="232">70</text><text x="826" y="232">90</text>
+          </g>
+          <!-- the moment of ambiguity -->
+          <line x1="440" y1="30" x2="440" y2="212" stroke="var(--ink-3)" stroke-width="1" stroke-dasharray="3 4"/>
+          <!-- field A: cut, recovers -->
+          <path d="M54 58 L182 50 L247 190 L311 150 L376 96 L440 176 L505 142 L569 78 L633 54 L697 186 L761 128 L826 66"
+                fill="none" stroke="var(--oncycle)" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+          <!-- field B: stressed, does not recover -->
+          <path d="M54 62 L182 56 L247 188 L311 158 L376 104 L440 178 L505 184 L569 190 L633 194 L697 197 L761 200 L826 202"
+                fill="none" stroke="var(--overdue)" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"
+                stroke-dasharray="0"/>
+          <circle cx="440" cy="176" r="5.5" fill="var(--oncycle)" stroke="var(--surface)" stroke-width="2"/>
+          <circle cx="440" cy="178" r="5.5" fill="var(--overdue)" stroke="var(--surface)" stroke-width="2"/>
+          <text x="432" y="26" text-anchor="end" font-size="12" fill="var(--ink-2)">same reading, day 40</text>
+          <text x="832" y="66" font-size="12" fill="var(--oncycle)" text-anchor="end" dy="-10">cut — regrows</text>
+          <text x="832" y="202" font-size="12" fill="var(--overdue)" text-anchor="end" dy="-10">stressed — does not</text>
+        </svg>
+      </div>
+      <figcaption>Schematic, not measured data. The NDVI levels (0.90 canopy, ~0.35 after cutting) and the ~30-day cadence are taken from the measured series; the two traces illustrate the mechanism.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <div class="col">
+      <div class="eyebrow">The measurement</div>
+      <h2>Most of what a decline ranking flags has simply been mown</h2>
+      <p class="body-2">We classified every pivot using its own NDVI trajectory: healthy, freshly cut and recovering, or low and staying low. The cut group is the trap &mdash; those fields sit at the top of a decline ranking and need nothing. Taking the twenty fields such a ranking would send you to first, and counting how many had simply been harvested, gives the same answer at every date in the season.</p>
+    </div>
+
+    <figure>
+      <div class="fig-h">
+        <h3>518 fields, one date, classified by what happened next</h3>
+        <p>One dot per field, 22 July 2026. Class is set by the field's own NDVI 15–45 days later, so the label is the outcome, not the appearance.</p>
+      </div>
+      <div class="units" id="units"></div>
+      <figcaption>Mean NDVI on the date — healthy 0.855, cut 0.326, stays low 0.134, mid-range 0.535. A decline ranking cannot separate the 40 freshly cut fields from the 253 that stay low: they occupy the same band. Most of those 253 are not stressed crops but fields fallowed for the summer, which is a second confound and the reason the tool reports them as out of rotation rather than as a problem.</figcaption>
+    </figure>
+
+    <div class="callout">
+      <div class="big">16 of the 20 fields a decline ranking sends you to first had just been harvested.</div>
+      <p>Measured at eight dates across the season, and never fewer than eleven of twenty. At season end that ranking and ours agree on one field out of twenty. In an aquifer that does not recharge, that is the number worth fixing.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <div class="eyebrow">The tool</div>
+      <h2>Judge each field against its own rhythm</h2>
+      <p class="body-2">Instead of asking whether a field has fallen, we ask whether it has fallen <em>further than it usually does at this point in its own cutting cycle</em>, and whether it has failed to come back when it was due.</p>
+    </div>
+    <ul class="clean">
+      <li><span class="n">1</span><span><b>Find the cuts.</b> A local NDVI maximum counts as a regrowth peak only if it stands 0.20 above the low points on both sides. That prominence test separates a real cut from a cloudy pixel.</span></li>
+      <li><span class="n">2</span><span><b>Measure the field's own cycle.</b> Median spacing between its peaks, bounded to 18–60 days. Fewer than two clean peaks and the field is flagged as having no observed cycle, rather than given a false one.</span></li>
+      <li><span class="n">3</span><span><b>Expected value at phase.</b> For a field <i>d</i> days past its last cut, what did <i>this same field</i> read <i>d</i> days after each of its previous cuts? A low-vigour field is judged against itself.</span></li>
+      <li><span class="n">4</span><span><b>Priority = deficit × hectares.</b> How far behind its own history, weighted by how much land that covers. Exactly zero for a field that is on schedule, so a freshly cut field can never enter the queue.</span></li>
+    </ul>
+    <div class="twoup">
+      <div class="card"><h3>On cycle</h3><p>“Cut 12 days ago on a 31-day cycle. The drop is on schedule — this is harvest, not stress.” Priority 0.</p></div>
+      <div class="card"><h3>Overdue</h3><p>“Cut 44 days ago on a 31-day cycle and still at NDVI 0.28. It should have regrown by now — inspect.” Priority = deficit × area.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <div class="eyebrow">The hyperspectral question</div>
+      <h2>We tested our own best idea, and it failed</h2>
+      <p class="body-2">Our original claim was that narrow bands — the photochemical reflectance index at 531/570 nm, the red-edge position, the 970 nm water-absorption depth — could separate a cut field from a stressed one where NDVI cannot. Sentinel-2 has none of those bands. NASA's EMIT does.</p>
+      <p class="body-2">We set it up as a prediction contest rather than a significance test: labels taken from what each field's NDVI did 15–45 days <em>after</em> the hyperspectral measurement, rows restricted to fields already low on the day, folds split by field, twenty repeats.</p>
+    </div>
+
+    <figure>
+      <div class="fig-h">
+        <h3>Random folds say the narrow bands help</h3>
+        <p>286 field-observations, 22 recover and 264 stay low, across two EMIT scenes. Cross-validated AUC, mean of 20 repeats.</p>
+      </div>
+      <div class="plot">
+        <svg viewBox="0 0 860 190" role="img" aria-label="Bar chart: NDVI only 0.781, NDVI plus narrow bands 0.897, NDVI plus all EMIT features 0.903.">
+          <g font-size="13" fill="var(--ink-2)">
+            <text x="0" y="40">NDVI only</text>
+            <text x="0" y="96">+ narrow bands</text>
+            <text x="0" y="152">+ all EMIT features</text>
+          </g>
+          <line x1="220" y1="14" x2="220" y2="176" stroke="var(--line)"/>
+          <line x1="500" y1="14" x2="500" y2="176" stroke="var(--line)" stroke-dasharray="3 4"/>
+          <text x="500" y="186" font-size="11" fill="var(--ink-3)" text-anchor="middle" class="num">0.5 = coin flip</text>
+          <rect x="220" y="24" width="376" height="22" rx="4" fill="var(--oncycle)"/>
+          <rect x="220" y="80" width="512" height="22" rx="4" fill="var(--accent)"/>
+          <rect x="220" y="136" width="518" height="22" rx="4" fill="var(--accent)"/>
+          <g font-size="13" class="num" fill="var(--ink)" font-weight="500">
+            <text x="608" y="40">0.781</text><text x="744" y="96">0.897</text><text x="750" y="152">0.903</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption>Better in 20 of 20 repeats, and it survives removing EMIT's own NDVI — so it is not merely a second NDVI measurement.</figcaption>
+    </figure>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>Then hold out a whole scene</th><th class="mono">n</th><th class="mono">recover</th><th class="mono">NDVI</th><th class="mono">+ narrow</th><th class="mono">+ all</th></tr></thead>
+        <tbody>
+          <tr class="lose"><td>Trained on July, tested on 18 Feb</td><td class="mono">29</td><td class="mono">3</td><td class="mono"><b>0.962</b></td><td class="mono">0.372</td><td class="mono">0.436</td></tr>
+          <tr class="lose"><td>Trained on February, tested on 22 Jul</td><td class="mono">257</td><td class="mono">19</td><td class="mono"><b>0.793</b></td><td class="mono">0.629</td><td class="mono">0.655</td></tr>
+        </tbody>
+      </table>
+      <div class="tnote">Adding the narrow bands makes prediction <b>worse</b> on a scene the model has not seen — in one case worse than a coin flip.</div>
+    </div>
+
+    <div class="callout" style="border-left-color:var(--accent)">
+      <div class="big">The +0.12 was the model recognising which scene a row came from.</div>
+      <p>Only two EMIT granules over this area matched a Sentinel-2 day within two days, and a February acquisition does not look like a July one. With two scenes, random folds cannot separate plant physiology from atmospheric conditions. We report the narrow-band indices per field as measurement, and we rank nothing with them.</p>
+    </div>
+
+    <div class="col" style="margin-top:26px">
+      <p class="body-2">The bottleneck is scene count, not field count: <b>2 of 60</b> EMIT granules over this area met the matching rule. Leave-one-scene-out needs six to eight before it has any power. That is worth doing. It is not worth blocking a submission on, and the organisers have confirmed hyperspectral use is bonus credit rather than a requirement.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <div class="eyebrow">Honest limits</div>
+      <h2>What this is not</h2>
+    </div>
+    <div class="twoup">
+      <div class="card"><h3>Not a diagnosis</h3><p>No field visit, no irrigation log, no yield record. Every status is a screening result. The tool says “look at this field first”, never “this field is water-stressed”.</p></div>
+      <div class="card"><h3>Needs two cuts</h3><p>A field with fewer than two clean peaks in the window gets the regional 30-day default and is flagged as such. Newly planted fields are the weak case.</p></div>
+      <div class="card"><h3>Detection is one date</h3><p>Fields bare on the chosen day are absent from the set. On an earlier run, detecting in July found 328 fields rather than 511 — that gap is the size of the effect.</p></div>
+      <div class="card"><h3>Relative, not absolute</h3><p>A field declining across several cycles is judged against its own already-degraded history and will under-flag. A longer baseline fixes it.</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <p><b>Data.</b> Copernicus Sentinel-2 L2A, 2026-02-07 to 2026-09-08, cloud &lt; 20%, mosaicked by solar day, SCL classes 0/1/3/8/9/10/11 removed. NASA EMIT L2A reflectance, granules of 2026-02-18 and 2026-07-22. Both openly licensed. Pivots detected at 20 m by NDVI threshold plus a shape filter (10–400 ha, eccentricity ≤ 0.75, solidity ≥ 0.85); per-field series sampled at 60 m.</p>
+    <p style="margin-top:10px">Team Beyond Earth · Arab Youth Space Hackathon 2026, 813 Challenge · Theme 02, Precision Agriculture &amp; Crop Intelligence.</p>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var groups = [
+    {k:"healthy",  n:103, label:"Healthy",       note:"full canopy", c:"var(--healthy)"},
+    {k:"other",    n:122, label:"Mid-range",     note:"no call made", c:"var(--other)"},
+    {k:"oncycle",  n:40,  label:"Freshly cut",   note:"recovers on schedule", c:"var(--oncycle)"},
+    {k:"overdue",  n:253, label:"Stays low",     note:"mostly fallow, not stressed", c:"var(--overdue)"}
+  ];
+  var host = document.getElementById("units");
+  groups.forEach(function(g){
+    var wrap = document.createElement("div");
+    wrap.className = "ugroup";
+    var h = document.createElement("div");
+    h.className = "uh";
+    h.innerHTML = '<span class="dotlab" style="background:'+g.c+'"></span>' +
+                  '<span class="un num">'+g.n+'</span>' +
+                  '<span class="ul">'+g.label+' · '+g.note+'</span>';
+    wrap.appendChild(h);
+    var grid = document.createElement("div");
+    grid.className = "grid-dots";
+    for (var i=0;i<g.n;i++){
+      var d = document.createElement("span");
+      d.className = "d";
+      d.style.background = g.c;
+      grid.appendChild(d);
+    }
+    wrap.appendChild(grid);
+    host.appendChild(wrap);
+  });
+})();
+</script>

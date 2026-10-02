@@ -1,0 +1,519 @@
+rank,field_id,area_ha,status,ndvi,expected_ndvi,deficit,cycle_days,days_since_peak,cycles_observed,priority,reason
+1,392,57.2,overdue,0.194,0.8045,0.6105,32.5,47,2,34.92,Cut 47 days ago on a 32-day cycle and still at NDVI 0.19. It should have regrown by now — inspect.
+2,138,49.0,overdue,0.131,0.7225,0.5915,37.5,57,2,28.98,Cut 57 days ago on a 38-day cycle and still at NDVI 0.13. It should have regrown by now — inspect.
+3,404,60.8,overdue,0.194,0.6555,0.4615,30.0,57,3,28.06,Cut 57 days ago on a 30-day cycle and still at NDVI 0.19. It should have regrown by now — inspect.
+4,195,48.3,overdue,0.12,0.627,0.507,45.0,67,3,24.49,Cut 67 days ago on a 45-day cycle and still at NDVI 0.12. It should have regrown by now — inspect.
+5,426,59.0,overdue,0.228,0.5922,0.3642,37.5,50,4,21.49,Cut 50 days ago on a 38-day cycle and still at NDVI 0.23. It should have regrown by now — inspect.
+6,457,63.8,overdue,0.396,0.711,0.315,25.0,35,5,20.1,Cut 35 days ago on a 25-day cycle and still at NDVI 0.40. It should have regrown by now — inspect.
+7,156,49.9,overdue,0.162,0.5235,0.3615,40.0,57,3,18.04,Cut 57 days ago on a 40-day cycle and still at NDVI 0.16. It should have regrown by now — inspect.
+8,416,48.6,overdue,0.145,0.504,0.359,40.0,85,3,17.45,Cut 85 days ago on a 40-day cycle and still at NDVI 0.14. It should have regrown by now — inspect.
+9,282,61.7,overdue,0.227,0.507,0.28,27.0,38,5,17.28,Cut 38 days ago on a 27-day cycle and still at NDVI 0.23. It should have regrown by now — inspect.
+10,511,47.2,off_cycle,0.495,0.841,0.346,34.0,34,4,16.33,NDVI 0.49 against 0.84 typical for day 34 of its own cycle — 0.35 below where this field normally sits.
+11,431,45.9,overdue,0.114,0.108,-0.006,40.0,85,1,15.42,Cut 85 days ago on a 40-day cycle and still at NDVI 0.11. It should have regrown by now — inspect.
+12,139,55.0,overdue,0.221,0.4808,0.2598,35.0,55,4,14.29,Cut 55 days ago on a 35-day cycle and still at NDVI 0.22. It should have regrown by now — inspect.
+13,126,48.3,overdue,0.208,0.499,0.291,37.5,50,2,14.06,Cut 50 days ago on a 38-day cycle and still at NDVI 0.21. It should have regrown by now — inspect.
+14,450,49.4,overdue,0.148,0.422,0.274,28.0,47,5,13.54,Cut 47 days ago on a 28-day cycle and still at NDVI 0.15. It should have regrown by now — inspect.
+15,83,49.2,overdue,0.122,0.384,0.262,42.0,67,3,12.89,Cut 67 days ago on a 42-day cycle and still at NDVI 0.12. It should have regrown by now — inspect.
+16,196,51.3,off_cycle,0.672,0.918,0.246,31.5,3,4,12.62,NDVI 0.67 against 0.92 typical for day 3 of its own cycle — 0.25 below where this field normally sits.
+17,169,48.7,off_cycle,0.511,0.732,0.221,41.0,5,5,10.76,NDVI 0.51 against 0.73 typical for day 5 of its own cycle — 0.22 below where this field normally sits.
+18,458,61.4,off_cycle,0.583,0.7525,0.1695,28.0,22,5,10.41,NDVI 0.58 against 0.75 typical for day 22 of its own cycle — 0.17 below where this field normally sits.
+19,6,22.2,overdue,0.119,0.5553,0.4363,31.5,57,4,9.69,Cut 57 days ago on a 32-day cycle and still at NDVI 0.12. It should have regrown by now — inspect.
+20,20,52.3,off_cycle,0.577,0.759,0.182,30.0,21,5,9.52,NDVI 0.58 against 0.76 typical for day 21 of its own cycle — 0.18 below where this field normally sits.
+21,349,45.6,overdue,0.149,0.3545,0.2055,38.5,88,2,9.37,Cut 88 days ago on a 38-day cycle and still at NDVI 0.15. It should have regrown by now — inspect.
+22,155,31.1,overdue,0.156,0.4505,0.2945,40.0,57,3,9.16,Cut 57 days ago on a 40-day cycle and still at NDVI 0.16. It should have regrown by now — inspect.
+23,12,51.0,overdue,0.115,0.277,0.162,26.0,78,4,8.26,Cut 78 days ago on a 26-day cycle and still at NDVI 0.12. It should have regrown by now — inspect.
+24,247,35.8,off_cycle,0.519,0.7498,0.2308,30.0,17,5,8.26,NDVI 0.52 against 0.75 typical for day 17 of its own cycle — 0.23 below where this field normally sits.
+25,143,25.5,overdue,0.146,0.4653,0.3193,31.0,47,4,8.14,Cut 47 days ago on a 31-day cycle and still at NDVI 0.15. It should have regrown by now — inspect.
+26,353,48.0,overdue,0.154,0.3217,0.1677,38.5,88,2,8.05,Cut 88 days ago on a 38-day cycle and still at NDVI 0.15. It should have regrown by now — inspect.
+27,448,76.0,overdue,0.14,0.24,0.1,43.0,60,3,7.6,Cut 60 days ago on a 43-day cycle and still at NDVI 0.14. It should have regrown by now — inspect.
+28,340,47.1,off_cycle,0.554,0.7152,0.1612,35.0,17,4,7.59,NDVI 0.55 against 0.72 typical for day 17 of its own cycle — 0.16 below where this field normally sits.
+29,59,37.9,off_cycle,0.53,0.7202,0.1902,31.5,17,4,7.21,NDVI 0.53 against 0.72 typical for day 17 of its own cycle — 0.19 below where this field normally sits.
+30,293,42.7,off_cycle,0.693,0.853,0.16,31.5,22,4,6.83,NDVI 0.69 against 0.85 typical for day 22 of its own cycle — 0.16 below where this field normally sits.
+31,57,36.2,overdue,0.124,0.312,0.188,40.0,72,3,6.81,Cut 72 days ago on a 40-day cycle and still at NDVI 0.12. It should have regrown by now — inspect.
+32,42,37.4,overdue,0.119,0.3,0.181,40.0,65,3,6.77,Cut 65 days ago on a 40-day cycle and still at NDVI 0.12. It should have regrown by now — inspect.
+33,82,32.9,off_cycle,0.694,0.871,0.177,32.0,28,5,5.82,NDVI 0.69 against 0.87 typical for day 28 of its own cycle — 0.18 below where this field normally sits.
+34,69,19.2,off_cycle,0.459,0.723,0.264,37.0,18,5,5.07,NDVI 0.46 against 0.72 typical for day 18 of its own cycle — 0.26 below where this field normally sits.
+35,55,40.0,overdue,0.134,0.2582,0.1242,38.5,98,2,4.97,Cut 98 days ago on a 38-day cycle and still at NDVI 0.13. It should have regrown by now — inspect.
+36,447,29.2,off_cycle,0.539,0.7045,0.1655,40.0,22,3,4.83,NDVI 0.54 against 0.70 typical for day 22 of its own cycle — 0.17 below where this field normally sits.
+37,11,17.6,off_cycle,0.488,0.6907,0.2027,32.5,2,4,3.57,NDVI 0.49 against 0.69 typical for day 2 of its own cycle — 0.20 below where this field normally sits.
+38,355,34.6,overdue,0.109,0.143,0.034,45.0,80,1,1.18,Cut 80 days ago on a 45-day cycle and still at NDVI 0.11. It should have regrown by now — inspect.
+39,240,59.8,overdue,0.312,0.331,0.019,36.0,78,2,1.14,Cut 78 days ago on a 36-day cycle and still at NDVI 0.31. It should have regrown by now — inspect.
+40,54,33.6,overdue,0.423,0.2622,-0.1608,35.0,52,2,0.91,Cut 52 days ago on a 35-day cycle and still at NDVI 0.42. It should have regrown by now — inspect.
+41,319,30.0,overdue,0.124,0.1502,0.0262,37.5,110,2,0.79,Cut 110 days ago on a 38-day cycle and still at NDVI 0.12. It should have regrown by now — inspect.
+42,325,34.6,overdue,0.118,0.1382,0.0202,37.5,110,2,0.7,Cut 110 days ago on a 38-day cycle and still at NDVI 0.12. It should have regrown by now — inspect.
+43,307,34.9,overdue,0.128,0.135,0.007,37.5,110,2,0.24,Cut 110 days ago on a 38-day cycle and still at NDVI 0.13. It should have regrown by now — inspect.
+44,300,30.0,overdue,0.135,0.142,0.007,37.5,110,2,0.21,Cut 110 days ago on a 38-day cycle and still at NDVI 0.14. It should have regrown by now — inspect.
+45,459,14.2,overdue,0.102,0.1163,0.0143,30.0,72,2,0.2,Cut 72 days ago on a 30-day cycle and still at NDVI 0.10. It should have regrown by now — inspect.
+,130,139.3,healthy,0.611,,,,165,0,0.0,Tracking its own cycle within tolerance.
+,469,82.9,healthy,0.61,0.557,-0.053,35.0,85,1,0.0,Tracking its own cycle within tolerance.
+,277,80.5,dormant,0.106,0.1205,0.0145,22.5,138,2,0.0,"Down for 138 days — more than three of its own 22-day cycles — with no regrowth. This field is out of rotation, not late."
+,201,79.0,recently_cut,0.301,0.32,0.019,45.0,45,3,0.0,"Cut 45 days ago on a 45-day cycle. The drop is on schedule — this is harvest, not stress."
+,85,78.4,healthy,0.67,0.421,-0.249,33.0,65,3,0.0,Tracking its own cycle within tolerance.
+,168,78.4,dormant,0.1,0.106,0.006,18.0,120,3,0.0,"Down for 120 days — more than three of its own 18-day cycles — with no regrowth. This field is out of rotation, not late."
+,106,77.7,healthy,0.534,0.5057,-0.0283,42.5,25,4,0.0,Tracking its own cycle within tolerance.
+,188,77.5,recently_cut,0.446,0.542,0.096,35.0,38,3,0.0,"Cut 38 days ago on a 35-day cycle. The drop is on schedule — this is harvest, not stress."
+,63,77.0,healthy,0.575,0.4945,-0.0805,37.5,25,4,0.0,Tracking its own cycle within tolerance.
+,133,76.7,healthy,0.729,0.668,-0.061,32.0,28,3,0.0,Full canopy (NDVI 0.73). Nothing to do.
+,86,76.6,recently_cut,0.228,0.371,0.143,31.5,25,2,0.0,"Cut 25 days ago on a 32-day cycle. The drop is on schedule — this is harvest, not stress."
+,174,76.6,healthy,0.58,0.321,-0.259,30.0,138,2,0.0,Tracking its own cycle within tolerance.
+,222,75.8,dormant,0.107,0.118,0.011,25.0,125,1,0.0,"Down for 125 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,93,75.6,healthy,0.612,0.446,-0.166,31.0,40,5,0.0,Tracking its own cycle within tolerance.
+,73,75.3,recently_cut,0.273,0.4465,0.1735,28.5,18,6,0.0,"Cut 18 days ago on a 28-day cycle. The drop is on schedule — this is harvest, not stress."
+,71,74.8,healthy,0.511,0.512,0.001,33.0,25,5,0.0,Tracking its own cycle within tolerance.
+,482,74.0,healthy,0.545,,,,125,0,0.0,Tracking its own cycle within tolerance.
+,225,73.5,dormant,0.105,0.1078,0.0028,31.5,120,2,0.0,"Down for 120 days — more than three of its own 32-day cycles — with no regrowth. This field is out of rotation, not late."
+,480,72.9,healthy,0.488,,,,,0,0.0,"Below 0.45 but no complete cycle observed yet, so this is a watch item rather than a call."
+,150,72.8,healthy,0.523,0.563,0.04,32.0,25,5,0.0,Tracking its own cycle within tolerance.
+,159,72.8,healthy,0.68,0.673,-0.007,36.0,15,3,0.0,Tracking its own cycle within tolerance.
+,491,72.6,healthy,0.584,,,,125,0,0.0,Tracking its own cycle within tolerance.
+,439,71.5,dormant,0.096,0.102,0.006,25.0,125,3,0.0,"Down for 125 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,292,67.3,healthy,0.587,0.5355,-0.0515,35.0,25,4,0.0,Tracking its own cycle within tolerance.
+,369,66.2,dormant,0.105,0.104,-0.001,29.0,125,2,0.0,"Down for 125 days — more than three of its own 29-day cycles — with no regrowth. This field is out of rotation, not late."
+,167,66.0,healthy,0.501,0.65,0.149,40.0,5,4,0.0,Tracking its own cycle within tolerance.
+,378,65.9,dormant,0.099,0.099,0.0,29.0,125,2,0.0,"Down for 125 days — more than three of its own 29-day cycles — with no regrowth. This field is out of rotation, not late."
+,153,65.7,healthy,0.518,0.594,0.076,32.0,18,5,0.0,Tracking its own cycle within tolerance.
+,89,65.5,dormant,0.096,0.089,-0.007,25.0,150,1,0.0,"Down for 150 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,484,65.3,dormant,0.356,0.37,0.014,26.5,120,2,0.0,"Down for 120 days — more than three of its own 26-day cycles — with no regrowth. This field is out of rotation, not late."
+,24,65.2,healthy,0.836,0.618,-0.218,36.5,21,4,0.0,Full canopy (NDVI 0.84). Nothing to do.
+,216,65.0,recently_cut,0.271,0.4305,0.1595,37.0,25,3,0.0,"Cut 25 days ago on a 37-day cycle. The drop is on schedule — this is harvest, not stress."
+,181,64.9,healthy,0.719,0.6615,-0.0575,30.0,25,3,0.0,Full canopy (NDVI 0.72). Nothing to do.
+,320,64.8,healthy,0.474,0.352,-0.122,40.0,45,2,0.0,Tracking its own cycle within tolerance.
+,498,64.8,healthy,0.552,0.617,0.065,31.5,17,4,0.0,Tracking its own cycle within tolerance.
+,88,64.7,healthy,0.773,0.885,0.112,40.0,98,1,0.0,Full canopy (NDVI 0.77). Nothing to do.
+,161,64.7,off_cycle,0.103,,,,,0,0.0,"Below 0.45 but no complete cycle observed yet, so this is a watch item rather than a call."
+,386,64.7,dormant,0.284,0.239,-0.045,31.0,150,1,0.0,"Down for 150 days — more than three of its own 31-day cycles — with no regrowth. This field is out of rotation, not late."
+,46,64.6,healthy,0.829,0.69,-0.139,31.5,120,2,0.0,Full canopy (NDVI 0.83). Nothing to do.
+,118,64.6,healthy,0.722,0.85,0.128,33.0,18,5,0.0,Full canopy (NDVI 0.72). Nothing to do.
+,302,64.6,recently_cut,0.233,0.468,0.235,32.0,10,5,0.0,"Cut 10 days ago on a 32-day cycle. The drop is on schedule — this is harvest, not stress."
+,405,64.5,dormant,0.121,0.1155,-0.0055,35.0,130,2,0.0,"Down for 130 days — more than three of its own 35-day cycles — with no regrowth. This field is out of rotation, not late."
+,452,64.5,healthy,0.941,0.779,-0.162,37.5,37,4,0.0,Full canopy (NDVI 0.94). Nothing to do.
+,36,64.4,dormant,0.101,0.1025,0.0015,29.0,125,2,0.0,"Down for 125 days — more than three of its own 29-day cycles — with no regrowth. This field is out of rotation, not late."
+,49,63.9,dormant,0.114,0.1115,-0.0025,25.0,125,2,0.0,"Down for 125 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,185,63.8,healthy,0.898,0.8345,-0.0635,18.0,165,1,0.0,Full canopy (NDVI 0.90). Nothing to do.
+,187,63.8,healthy,0.841,0.758,-0.083,18.0,165,1,0.0,Full canopy (NDVI 0.84). Nothing to do.
+,316,63.8,dormant,0.106,0.105,-0.001,29.0,125,2,0.0,"Down for 125 days — more than three of its own 29-day cycles — with no regrowth. This field is out of rotation, not late."
+,314,63.7,healthy,0.73,0.538,-0.192,35.0,15,5,0.0,Full canopy (NDVI 0.73). Nothing to do.
+,171,63.6,healthy,0.658,0.645,-0.013,37.5,24,4,0.0,Tracking its own cycle within tolerance.
+,324,63.6,recently_cut,0.383,0.547,0.164,38.0,15,4,0.0,"Cut 15 days ago on a 38-day cycle. The drop is on schedule — this is harvest, not stress."
+,335,63.6,dormant,0.116,0.112,-0.004,25.0,120,3,0.0,"Down for 120 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,183,63.5,healthy,0.878,0.7525,-0.1255,18.0,165,1,0.0,Full canopy (NDVI 0.88). Nothing to do.
+,313,63.5,dormant,0.117,0.122,0.005,25.0,120,3,0.0,"Down for 120 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,72,63.4,healthy,0.639,0.2835,-0.3555,33.0,50,1,0.0,Tracking its own cycle within tolerance.
+,310,63.4,dormant,0.101,0.0925,-0.0085,18.0,165,1,0.0,"Down for 165 days — more than three of its own 18-day cycles — with no regrowth. This field is out of rotation, not late."
+,481,63.4,recently_cut,0.33,0.509,0.179,30.0,22,5,0.0,"Cut 22 days ago on a 30-day cycle. The drop is on schedule — this is harvest, not stress."
+,206,63.2,dormant,0.094,0.096,0.002,18.0,120,3,0.0,"Down for 120 days — more than three of its own 18-day cycles — with no regrowth. This field is out of rotation, not late."
+,488,63.2,healthy,0.551,0.472,-0.079,30.0,32,3,0.0,Tracking its own cycle within tolerance.
+,189,62.9,healthy,0.868,0.7905,-0.0775,18.0,165,1,0.0,Full canopy (NDVI 0.87). Nothing to do.
+,7,62.6,dormant,0.116,0.1207,0.0047,36.5,110,2,0.0,"Down for 110 days — more than three of its own 36-day cycles — with no regrowth. This field is out of rotation, not late."
+,190,62.6,dormant,0.106,0.113,0.007,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,170,62.5,dormant,0.107,0.103,-0.004,25.0,125,2,0.0,"Down for 125 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,113,62.4,recently_cut,0.324,0.385,0.061,35.0,45,2,0.0,"Cut 45 days ago on a 35-day cycle. The drop is on schedule — this is harvest, not stress."
+,263,62.4,dormant,0.1,0.117,0.017,18.0,120,3,0.0,"Down for 120 days — more than three of its own 18-day cycles — with no regrowth. This field is out of rotation, not late."
+,413,62.4,healthy,0.924,0.661,-0.263,35.0,28,5,0.0,Full canopy (NDVI 0.92). Nothing to do.
+,445,62.4,dormant,0.134,0.174,0.04,31.0,110,2,0.0,"Down for 110 days — more than three of its own 31-day cycles — with no regrowth. This field is out of rotation, not late."
+,303,62.2,healthy,0.519,0.532,0.013,27.0,38,5,0.0,Tracking its own cycle within tolerance.
+,149,61.6,healthy,0.916,0.6987,-0.2173,38.5,38,4,0.0,Full canopy (NDVI 0.92). Nothing to do.
+,77,61.4,healthy,0.662,0.587,-0.075,25.0,93,3,0.0,Tracking its own cycle within tolerance.
+,166,61.4,dormant,0.102,0.097,-0.005,33.0,150,1,0.0,"Down for 150 days — more than three of its own 33-day cycles — with no regrowth. This field is out of rotation, not late."
+,186,61.3,dormant,0.062,0.064,0.002,22.5,138,2,0.0,"Down for 138 days — more than three of its own 22-day cycles — with no regrowth. This field is out of rotation, not late."
+,479,61.3,recently_cut,0.262,0.392,0.13,34.0,37,4,0.0,"Cut 37 days ago on a 34-day cycle. The drop is on schedule — this is harvest, not stress."
+,397,61.2,dormant,0.092,0.098,0.006,20.0,125,3,0.0,"Down for 125 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,478,61.0,healthy,0.707,0.71,0.003,20.0,35,5,0.0,Full canopy (NDVI 0.71). Nothing to do.
+,137,60.8,dormant,0.094,0.1087,0.0147,29.0,125,2,0.0,"Down for 125 days — more than three of its own 29-day cycles — with no regrowth. This field is out of rotation, not late."
+,462,60.5,dormant,0.096,,,,197,0,0.0,"Down for 197 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,230,60.4,dormant,0.112,0.1155,0.0035,18.0,120,1,0.0,"Down for 120 days — more than three of its own 18-day cycles — with no regrowth. This field is out of rotation, not late."
+,463,60.4,healthy,0.962,0.8,-0.162,30.0,32,3,0.0,Full canopy (NDVI 0.96). Nothing to do.
+,483,60.4,healthy,0.686,0.781,0.095,32.0,3,5,0.0,Tracking its own cycle within tolerance.
+,136,60.1,dormant,0.097,0.0935,-0.0035,18.0,165,1,0.0,"Down for 165 days — more than three of its own 18-day cycles — with no regrowth. This field is out of rotation, not late."
+,218,60.1,healthy,0.554,0.568,0.014,40.0,70,3,0.0,Tracking its own cycle within tolerance.
+,242,60.0,healthy,0.653,0.4205,-0.2325,38.0,65,3,0.0,Tracking its own cycle within tolerance.
+,440,60.0,dormant,0.095,0.098,0.003,18.0,120,3,0.0,"Down for 120 days — more than three of its own 18-day cycles — with no regrowth. This field is out of rotation, not late."
+,107,59.9,dormant,0.098,0.096,-0.002,25.0,133,2,0.0,"Down for 133 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,211,59.8,healthy,0.522,0.489,-0.033,35.0,65,3,0.0,Tracking its own cycle within tolerance.
+,215,59.8,dormant,0.111,0.1293,0.0183,31.5,120,2,0.0,"Down for 120 days — more than three of its own 32-day cycles — with no regrowth. This field is out of rotation, not late."
+,39,59.6,dormant,0.102,0.116,0.014,30.0,125,1,0.0,"Down for 125 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,147,59.6,healthy,0.886,0.8015,-0.0845,37.5,33,4,0.0,Full canopy (NDVI 0.89). Nothing to do.
+,140,59.4,healthy,0.661,0.6745,0.0135,33.0,25,4,0.0,Tracking its own cycle within tolerance.
+,252,59.3,dormant,0.348,,,,125,0,0.0,"Down for 125 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,259,59.3,healthy,0.572,0.557,-0.015,42.5,17,4,0.0,Tracking its own cycle within tolerance.
+,154,58.8,healthy,0.753,0.7215,-0.0315,33.0,25,4,0.0,Full canopy (NDVI 0.75). Nothing to do.
+,40,58.0,dormant,0.102,0.1065,0.0045,29.0,125,2,0.0,"Down for 125 days — more than three of its own 29-day cycles — with no regrowth. This field is out of rotation, not late."
+,43,57.5,healthy,0.704,0.6555,-0.0485,40.0,40,4,0.0,Full canopy (NDVI 0.70). Nothing to do.
+,226,56.7,recently_cut,0.417,0.502,0.085,37.5,25,4,0.0,"Cut 25 days ago on a 38-day cycle. The drop is on schedule — this is harvest, not stress."
+,279,56.2,healthy,0.85,0.782,-0.068,38.5,38,4,0.0,Full canopy (NDVI 0.85). Nothing to do.
+,198,55.7,healthy,0.736,0.421,-0.315,29.0,15,1,0.0,Full canopy (NDVI 0.74). Nothing to do.
+,214,55.7,healthy,0.584,0.54,-0.044,32.0,50,3,0.0,Tracking its own cycle within tolerance.
+,22,55.4,healthy,0.908,0.8593,-0.0487,35.0,32,4,0.0,Full canopy (NDVI 0.91). Nothing to do.
+,184,55.2,healthy,0.577,0.1457,-0.4312,22.5,120,2,0.0,Tracking its own cycle within tolerance.
+,317,55.1,dormant,0.133,0.127,-0.006,32.5,125,2,0.0,"Down for 125 days — more than three of its own 32-day cycles — with no regrowth. This field is out of rotation, not late."
+,80,54.8,healthy,0.814,0.6278,-0.1862,26.5,60,4,0.0,Full canopy (NDVI 0.81). Nothing to do.
+,453,54.4,dormant,0.126,0.2795,0.1535,30.0,92,3,0.0,"Down for 92 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,412,54.0,dormant,0.13,0.1085,-0.0215,22.5,120,2,0.0,"Down for 120 days — more than three of its own 22-day cycles — with no regrowth. This field is out of rotation, not late."
+,337,53.9,recently_cut,0.415,0.3475,-0.0675,40.0,17,4,0.0,"Cut 17 days ago on a 40-day cycle. The drop is on schedule — this is harvest, not stress."
+,5,53.8,recently_cut,0.423,0.643,0.22,36.0,21,4,0.0,"Cut 21 days ago on a 36-day cycle. The drop is on schedule — this is harvest, not stress."
+,217,53.8,healthy,0.67,0.7545,0.0845,38.5,38,4,0.0,Tracking its own cycle within tolerance.
+,125,53.6,dormant,0.11,0.1045,-0.0055,45.0,137,1,0.0,"Down for 137 days — more than three of its own 45-day cycles — with no regrowth. This field is out of rotation, not late."
+,207,53.6,healthy,0.659,0.532,-0.127,37.0,60,3,0.0,Tracking its own cycle within tolerance.
+,208,53.2,off_cycle,0.1,,,,,0,0.0,"Below 0.45 but no complete cycle observed yet, so this is a watch item rather than a call."
+,276,53.1,healthy,0.725,0.6505,-0.0745,38.5,25,4,0.0,Full canopy (NDVI 0.72). Nothing to do.
+,180,53.0,healthy,0.798,0.761,-0.037,30.0,65,3,0.0,Full canopy (NDVI 0.80). Nothing to do.
+,177,52.8,healthy,0.735,0.572,-0.163,31.0,18,5,0.0,Full canopy (NDVI 0.73). Nothing to do.
+,467,52.6,dormant,0.101,0.1055,0.0045,45.0,137,1,0.0,"Down for 137 days — more than three of its own 45-day cycles — with no regrowth. This field is out of rotation, not late."
+,48,52.4,recently_cut,0.382,0.5815,0.1995,43.5,18,4,0.0,"Cut 18 days ago on a 44-day cycle. The drop is on schedule — this is harvest, not stress."
+,301,52.3,healthy,0.884,0.8838,-0.0002,37.5,32,4,0.0,Full canopy (NDVI 0.88). Nothing to do.
+,485,52.0,dormant,0.121,0.136,0.015,25.0,165,1,0.0,"Down for 165 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,434,51.9,dormant,0.097,0.096,-0.001,25.0,125,1,0.0,"Down for 125 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,290,51.8,healthy,0.862,0.5835,-0.2785,35.0,40,4,0.0,Full canopy (NDVI 0.86). Nothing to do.
+,414,51.8,dormant,0.101,,,,200,0,0.0,"Down for 200 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,438,51.8,healthy,0.713,0.5725,-0.1405,35.0,40,3,0.0,Full canopy (NDVI 0.71). Nothing to do.
+,52,51.7,recently_cut,0.347,0.5202,0.1733,43.5,18,4,0.0,"Cut 18 days ago on a 44-day cycle. The drop is on schedule — this is harvest, not stress."
+,204,51.7,healthy,0.688,0.628,-0.06,38.0,10,4,0.0,Tracking its own cycle within tolerance.
+,326,51.7,dormant,0.131,0.116,-0.015,18.0,120,3,0.0,"Down for 120 days — more than three of its own 18-day cycles — with no regrowth. This field is out of rotation, not late."
+,350,51.7,healthy,0.476,,,,,0,0.0,"Below 0.45 but no complete cycle observed yet, so this is a watch item rather than a call."
+,398,51.7,dormant,0.097,0.1175,0.0205,40.0,125,1,0.0,"Down for 125 days — more than three of its own 40-day cycles — with no regrowth. This field is out of rotation, not late."
+,158,51.6,recently_cut,0.365,0.7988,0.4338,36.5,5,4,0.0,"Cut 5 days ago on a 36-day cycle. The drop is on schedule — this is harvest, not stress."
+,212,51.4,healthy,0.821,0.834,0.013,33.0,33,5,0.0,Full canopy (NDVI 0.82). Nothing to do.
+,108,51.3,dormant,0.095,0.084,-0.011,25.0,150,1,0.0,"Down for 150 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,179,51.3,healthy,0.889,0.833,-0.056,30.0,25,3,0.0,Full canopy (NDVI 0.89). Nothing to do.
+,164,51.2,healthy,0.917,0.4,-0.517,33.0,40,3,0.0,Full canopy (NDVI 0.92). Nothing to do.
+,417,51.2,dormant,0.099,0.1135,0.0145,25.0,150,2,0.0,"Down for 150 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,123,51.1,healthy,0.716,0.7682,0.0523,36.0,5,4,0.0,Full canopy (NDVI 0.72). Nothing to do.
+,128,51.0,dormant,0.097,0.115,0.018,18.0,120,3,0.0,"Down for 120 days — more than three of its own 18-day cycles — with no regrowth. This field is out of rotation, not late."
+,202,51.0,recently_cut,0.385,0.787,0.402,32.0,18,5,0.0,"Cut 18 days ago on a 32-day cycle. The drop is on schedule — this is harvest, not stress."
+,304,51.0,dormant,0.101,0.0995,-0.0015,18.0,120,1,0.0,"Down for 120 days — more than three of its own 18-day cycles — with no regrowth. This field is out of rotation, not late."
+,508,51.0,dormant,0.1,0.121,0.021,25.0,120,3,0.0,"Down for 120 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,78,50.9,recently_cut,0.411,0.352,-0.059,38.0,10,5,0.0,"Cut 10 days ago on a 38-day cycle. The drop is on schedule — this is harvest, not stress."
+,402,50.9,healthy,0.917,0.8125,-0.1045,30.5,30,4,0.0,Full canopy (NDVI 0.92). Nothing to do.
+,173,50.7,healthy,0.774,0.3603,-0.4138,32.5,120,2,0.0,Full canopy (NDVI 0.77). Nothing to do.
+,127,50.6,dormant,0.1,0.1105,0.0105,29.0,125,2,0.0,"Down for 125 days — more than three of its own 29-day cycles — with no regrowth. This field is out of rotation, not late."
+,199,50.6,healthy,0.877,0.8,-0.077,30.0,28,5,0.0,Full canopy (NDVI 0.88). Nothing to do.
+,466,50.6,healthy,0.932,0.864,-0.068,37.5,37,4,0.0,Full canopy (NDVI 0.93). Nothing to do.
+,209,50.5,healthy,0.462,0.531,0.069,33.0,15,5,0.0,Tracking its own cycle within tolerance.
+,455,50.5,healthy,0.674,0.7965,0.1225,35.0,32,4,0.0,Tracking its own cycle within tolerance.
+,477,50.5,healthy,0.537,0.6525,0.1155,40.0,22,4,0.0,Tracking its own cycle within tolerance.
+,112,50.4,dormant,0.108,0.095,-0.013,33.0,149,1,0.0,"Down for 149 days — more than three of its own 33-day cycles — with no regrowth. This field is out of rotation, not late."
+,172,50.4,healthy,0.884,0.778,-0.106,36.5,25,4,0.0,Full canopy (NDVI 0.88). Nothing to do.
+,393,50.3,healthy,0.92,0.8688,-0.0513,30.0,37,3,0.0,Full canopy (NDVI 0.92). Nothing to do.
+,444,50.3,healthy,0.925,0.7585,-0.1665,47.5,32,2,0.0,Full canopy (NDVI 0.93). Nothing to do.
+,461,50.3,dormant,0.168,0.117,-0.051,25.0,120,3,0.0,"Down for 120 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,38,50.2,healthy,0.532,0.564,0.032,31.0,18,4,0.0,Tracking its own cycle within tolerance.
+,332,50.2,dormant,0.106,0.115,0.009,28.0,125,2,0.0,"Down for 125 days — more than three of its own 28-day cycles — with no regrowth. This field is out of rotation, not late."
+,362,50.2,dormant,0.104,0.108,0.004,22.5,138,2,0.0,"Down for 138 days — more than three of its own 22-day cycles — with no regrowth. This field is out of rotation, not late."
+,472,50.2,healthy,0.599,0.138,-0.461,25.0,120,3,0.0,Tracking its own cycle within tolerance.
+,23,50.1,recently_cut,0.434,0.4925,0.0585,33.0,17,5,0.0,"Cut 17 days ago on a 33-day cycle. The drop is on schedule — this is harvest, not stress."
+,29,50.1,healthy,0.933,0.852,-0.081,30.0,37,3,0.0,Full canopy (NDVI 0.93). Nothing to do.
+,410,50.1,dormant,0.098,0.097,-0.001,35.0,147,1,0.0,"Down for 147 days — more than three of its own 35-day cycles — with no regrowth. This field is out of rotation, not late."
+,468,50.1,healthy,0.684,0.5805,-0.1035,35.0,137,1,0.0,Tracking its own cycle within tolerance.
+,223,50.0,healthy,0.728,0.2465,-0.4815,26.0,138,2,0.0,Full canopy (NDVI 0.73). Nothing to do.
+,348,50.0,dormant,0.094,0.098,0.004,26.0,138,2,0.0,"Down for 138 days — more than three of its own 26-day cycles — with no regrowth. This field is out of rotation, not late."
+,14,49.9,healthy,0.683,0.64,-0.043,32.5,21,4,0.0,Tracking its own cycle within tolerance.
+,116,49.9,healthy,0.707,0.4885,-0.2185,40.0,17,4,0.0,Full canopy (NDVI 0.71). Nothing to do.
+,367,49.9,dormant,0.098,0.107,0.009,22.5,120,2,0.0,"Down for 120 days — more than three of its own 22-day cycles — with no regrowth. This field is out of rotation, not late."
+,381,49.9,dormant,0.121,0.15,0.029,,100,0,0.0,"Down for 100 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,486,49.9,healthy,0.695,0.139,-0.556,25.0,120,3,0.0,Tracking its own cycle within tolerance.
+,62,49.8,dormant,0.104,0.105,0.001,29.0,125,2,0.0,"Down for 125 days — more than three of its own 29-day cycles — with no regrowth. This field is out of rotation, not late."
+,192,49.8,healthy,0.857,0.7105,-0.1465,41.0,28,4,0.0,Full canopy (NDVI 0.86). Nothing to do.
+,346,49.8,dormant,0.099,0.101,0.002,25.0,120,3,0.0,"Down for 120 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,422,49.8,dormant,0.206,0.1165,-0.0895,45.0,137,1,0.0,"Down for 137 days — more than three of its own 45-day cycles — with no regrowth. This field is out of rotation, not late."
+,68,49.7,healthy,0.514,0.558,0.044,37.0,10,5,0.0,Tracking its own cycle within tolerance.
+,81,49.7,healthy,0.642,0.6945,0.0525,36.5,38,4,0.0,Tracking its own cycle within tolerance.
+,387,49.7,dormant,0.102,0.113,0.011,28.0,125,2,0.0,"Down for 125 days — more than three of its own 28-day cycles — with no regrowth. This field is out of rotation, not late."
+,407,49.7,dormant,0.127,0.127,0.0,32.0,133,1,0.0,"Down for 133 days — more than three of its own 32-day cycles — with no regrowth. This field is out of rotation, not late."
+,425,49.7,dormant,0.106,0.091,-0.015,25.0,150,2,0.0,"Down for 150 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,21,49.6,dormant,0.105,0.108,0.003,20.0,125,3,0.0,"Down for 125 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,388,49.6,healthy,0.72,0.123,-0.597,45.0,137,1,0.0,Full canopy (NDVI 0.72). Nothing to do.
+,432,49.6,dormant,0.112,0.108,-0.004,25.0,125,1,0.0,"Down for 125 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,30,49.5,healthy,0.941,0.9183,-0.0227,32.0,28,4,0.0,Full canopy (NDVI 0.94). Nothing to do.
+,99,49.5,healthy,0.944,0.8558,-0.0882,35.0,32,3,0.0,Full canopy (NDVI 0.94). Nothing to do.
+,327,49.5,dormant,0.115,0.1085,-0.0065,45.0,137,1,0.0,"Down for 137 days — more than three of its own 45-day cycles — with no regrowth. This field is out of rotation, not late."
+,375,49.5,dormant,0.094,0.0995,0.0055,26.0,138,2,0.0,"Down for 138 days — more than three of its own 26-day cycles — with no regrowth. This field is out of rotation, not late."
+,379,49.5,dormant,0.135,0.124,-0.011,26.0,138,2,0.0,"Down for 138 days — more than three of its own 26-day cycles — with no regrowth. This field is out of rotation, not late."
+,446,49.5,dormant,0.125,0.158,0.033,25.0,120,3,0.0,"Down for 120 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,4,49.4,healthy,0.48,0.5465,0.0665,36.5,21,4,0.0,Tracking its own cycle within tolerance.
+,274,49.4,healthy,0.774,0.7535,-0.0205,30.0,25,4,0.0,Full canopy (NDVI 0.77). Nothing to do.
+,356,49.3,healthy,0.589,,,,,0,0.0,"Below 0.45 but no complete cycle observed yet, so this is a watch item rather than a call."
+,360,49.3,healthy,0.858,0.672,-0.186,40.0,27,3,0.0,Full canopy (NDVI 0.86). Nothing to do.
+,372,49.3,dormant,0.098,0.097,-0.001,22.5,120,2,0.0,"Down for 120 days — more than three of its own 22-day cycles — with no regrowth. This field is out of rotation, not late."
+,142,49.2,healthy,0.756,,,,182,0,0.0,Full canopy (NDVI 0.76). Nothing to do.
+,334,49.2,dormant,0.378,0.1875,-0.1905,26.0,138,2,0.0,"Down for 138 days — more than three of its own 26-day cycles — with no regrowth. This field is out of rotation, not late."
+,351,49.2,recently_cut,0.428,0.323,-0.105,40.0,17,4,0.0,"Cut 17 days ago on a 40-day cycle. The drop is on schedule — this is harvest, not stress."
+,357,49.2,dormant,0.111,0.138,0.027,22.5,138,2,0.0,"Down for 138 days — more than three of its own 22-day cycles — with no regrowth. This field is out of rotation, not late."
+,436,49.2,recently_cut,0.39,0.56,0.17,42.5,17,4,0.0,"Cut 17 days ago on a 42-day cycle. The drop is on schedule — this is harvest, not stress."
+,104,49.1,dormant,0.112,0.098,-0.014,29.0,125,2,0.0,"Down for 125 days — more than three of its own 29-day cycles — with no regrowth. This field is out of rotation, not late."
+,121,49.1,dormant,0.104,0.116,0.012,29.0,125,2,0.0,"Down for 125 days — more than three of its own 29-day cycles — with no regrowth. This field is out of rotation, not late."
+,336,49.1,healthy,0.543,0.5325,-0.0105,30.0,17,5,0.0,Tracking its own cycle within tolerance.
+,390,49.1,dormant,0.259,0.1135,-0.1455,22.5,120,2,0.0,"Down for 120 days — more than three of its own 22-day cycles — with no regrowth. This field is out of rotation, not late."
+,442,49.1,dormant,0.108,0.118,0.01,28.0,125,2,0.0,"Down for 125 days — more than three of its own 28-day cycles — with no regrowth. This field is out of rotation, not late."
+,134,49.0,healthy,0.936,0.8127,-0.1233,30.0,37,3,0.0,Full canopy (NDVI 0.94). Nothing to do.
+,365,49.0,dormant,0.133,0.128,-0.005,25.0,120,3,0.0,"Down for 120 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,385,49.0,dormant,0.096,0.091,-0.005,27.0,138,1,0.0,"Down for 138 days — more than three of its own 27-day cycles — with no regrowth. This field is out of rotation, not late."
+,401,49.0,dormant,0.109,0.115,0.006,28.0,125,2,0.0,"Down for 125 days — more than three of its own 28-day cycles — with no regrowth. This field is out of rotation, not late."
+,419,49.0,healthy,0.486,0.5845,0.0985,40.0,17,4,0.0,Tracking its own cycle within tolerance.
+,429,49.0,dormant,0.105,0.094,-0.011,25.0,150,2,0.0,"Down for 150 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,470,49.0,healthy,0.938,0.816,-0.122,35.0,32,5,0.0,Full canopy (NDVI 0.94). Nothing to do.
+,513,49.0,recently_cut,0.187,0.612,0.425,37.5,30,4,0.0,"Cut 30 days ago on a 38-day cycle. The drop is on schedule — this is harvest, not stress."
+,119,48.9,healthy,0.676,0.607,-0.069,36.0,21,4,0.0,Tracking its own cycle within tolerance.
+,409,48.9,dormant,0.141,0.1123,-0.0287,22.5,120,2,0.0,"Down for 120 days — more than three of its own 22-day cycles — with no regrowth. This field is out of rotation, not late."
+,382,48.8,healthy,0.477,0.453,-0.024,40.0,17,4,0.0,Tracking its own cycle within tolerance.
+,501,48.8,dormant,0.097,0.1028,0.0058,20.0,125,2,0.0,"Down for 125 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,33,48.7,healthy,0.509,0.6285,0.1195,25.0,18,6,0.0,Tracking its own cycle within tolerance.
+,144,48.7,healthy,0.878,0.825,-0.053,27.5,25,4,0.0,Full canopy (NDVI 0.88). Nothing to do.
+,163,48.7,healthy,0.902,0.702,-0.2,34.0,47,4,0.0,Full canopy (NDVI 0.90). Nothing to do.
+,496,48.7,healthy,0.855,0.662,-0.193,35.0,22,5,0.0,Full canopy (NDVI 0.85). Nothing to do.
+,37,48.6,recently_cut,0.381,0.586,0.205,27.5,20,4,0.0,"Cut 20 days ago on a 28-day cycle. The drop is on schedule — this is harvest, not stress."
+,117,48.6,dormant,0.099,0.1123,0.0132,31.5,120,2,0.0,"Down for 120 days — more than three of its own 32-day cycles — with no regrowth. This field is out of rotation, not late."
+,141,48.6,healthy,0.93,0.6425,-0.2875,37.5,22,4,0.0,Full canopy (NDVI 0.93). Nothing to do.
+,376,48.6,dormant,0.096,0.092,-0.004,27.0,138,1,0.0,"Down for 138 days — more than three of its own 27-day cycles — with no regrowth. This field is out of rotation, not late."
+,473,48.6,dormant,0.249,0.159,-0.09,43.0,137,1,0.0,"Down for 137 days — more than three of its own 43-day cycles — with no regrowth. This field is out of rotation, not late."
+,160,48.5,healthy,0.797,0.6875,-0.1095,32.5,22,4,0.0,Full canopy (NDVI 0.80). Nothing to do.
+,194,48.5,healthy,0.713,0.683,-0.03,42.0,21,4,0.0,Full canopy (NDVI 0.71). Nothing to do.
+,67,48.4,healthy,0.49,0.543,0.053,32.0,18,5,0.0,Tracking its own cycle within tolerance.
+,114,48.4,dormant,0.094,,,,183,0,0.0,"Down for 183 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,408,48.4,dormant,0.104,0.125,0.021,25.0,125,3,0.0,"Down for 125 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,17,48.3,recently_cut,0.404,0.655,0.251,38.0,18,4,0.0,"Cut 18 days ago on a 38-day cycle. The drop is on schedule — this is harvest, not stress."
+,32,48.3,recently_cut,0.261,0.561,0.3,35.0,10,5,0.0,"Cut 10 days ago on a 35-day cycle. The drop is on schedule — this is harvest, not stress."
+,465,48.3,dormant,0.171,0.134,-0.037,25.0,120,3,0.0,"Down for 120 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,162,48.2,healthy,0.88,0.899,0.019,30.0,23,3,0.0,Full canopy (NDVI 0.88). Nothing to do.
+,476,48.2,dormant,0.113,0.1298,0.0168,30.5,120,2,0.0,"Down for 120 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,65,48.1,recently_cut,0.304,0.421,0.117,40.0,38,3,0.0,"Cut 38 days ago on a 40-day cycle. The drop is on schedule — this is harvest, not stress."
+,454,48.1,healthy,0.957,0.7905,-0.1665,36.5,37,2,0.0,Full canopy (NDVI 0.96). Nothing to do.
+,31,48.0,dormant,0.119,0.1185,-0.0005,19.0,145,2,0.0,"Down for 145 days — more than three of its own 19-day cycles — with no regrowth. This field is out of rotation, not late."
+,411,48.0,dormant,0.27,0.109,-0.161,22.5,120,2,0.0,"Down for 120 days — more than three of its own 22-day cycles — with no regrowth. This field is out of rotation, not late."
+,437,48.0,healthy,0.931,0.7572,-0.1738,37.5,27,4,0.0,Full canopy (NDVI 0.93). Nothing to do.
+,474,48.0,healthy,0.886,0.5102,-0.3758,32.5,47,4,0.0,Full canopy (NDVI 0.89). Nothing to do.
+,380,47.9,dormant,0.109,0.104,-0.005,31.0,150,1,0.0,"Down for 150 days — more than three of its own 31-day cycles — with no regrowth. This field is out of rotation, not late."
+,205,47.8,healthy,0.81,0.586,-0.224,45.0,40,3,0.0,Full canopy (NDVI 0.81). Nothing to do.
+,399,47.8,dormant,0.114,0.138,0.024,27.0,138,1,0.0,"Down for 138 days — more than three of its own 27-day cycles — with no regrowth. This field is out of rotation, not late."
+,157,47.7,healthy,0.478,0.625,0.147,32.0,18,5,0.0,Tracking its own cycle within tolerance.
+,389,47.7,dormant,0.117,0.123,0.006,27.0,138,1,0.0,"Down for 138 days — more than three of its own 27-day cycles — with no regrowth. This field is out of rotation, not late."
+,100,47.6,healthy,0.507,0.4305,-0.0765,29.0,125,2,0.0,Tracking its own cycle within tolerance.
+,497,47.6,healthy,0.663,0.3558,-0.3073,25.0,147,2,0.0,Tracking its own cycle within tolerance.
+,102,47.5,healthy,0.801,0.7985,-0.0025,34.5,18,4,0.0,Full canopy (NDVI 0.80). Nothing to do.
+,288,47.5,dormant,0.114,0.12,0.006,32.5,120,2,0.0,"Down for 120 days — more than three of its own 32-day cycles — with no regrowth. This field is out of rotation, not late."
+,91,47.4,healthy,0.961,0.9305,-0.0305,30.0,28,3,0.0,Full canopy (NDVI 0.96). Nothing to do.
+,94,47.4,recently_cut,0.241,0.5633,0.3223,37.5,27,4,0.0,"Cut 27 days ago on a 38-day cycle. The drop is on schedule — this is harvest, not stress."
+,287,47.4,dormant,0.128,0.142,0.014,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,321,47.4,dormant,0.132,0.11,-0.022,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,345,47.4,healthy,0.757,0.2645,-0.4925,20.0,92,2,0.0,Full canopy (NDVI 0.76). Nothing to do.
+,70,47.3,healthy,0.684,0.6535,-0.0305,30.0,55,3,0.0,Tracking its own cycle within tolerance.
+,120,47.3,healthy,0.906,0.83,-0.076,35.0,25,3,0.0,Full canopy (NDVI 0.91). Nothing to do.
+,347,47.2,dormant,0.14,0.14,0.0,18.0,120,3,0.0,"Down for 120 days — more than three of its own 18-day cycles — with no regrowth. This field is out of rotation, not late."
+,517,47.2,healthy,0.708,0.5665,-0.1415,34.0,42,2,0.0,Full canopy (NDVI 0.71). Nothing to do.
+,383,47.1,recently_cut,0.418,0.441,0.023,40.0,17,4,0.0,"Cut 17 days ago on a 40-day cycle. The drop is on schedule — this is harvest, not stress."
+,424,47.1,healthy,0.665,0.4815,-0.1835,37.5,17,4,0.0,Tracking its own cycle within tolerance.
+,495,47.1,dormant,0.111,0.098,-0.013,35.0,130,1,0.0,"Down for 130 days — more than three of its own 35-day cycles — with no regrowth. This field is out of rotation, not late."
+,111,47.0,healthy,0.909,0.812,-0.097,32.0,28,5,0.0,Full canopy (NDVI 0.91). Nothing to do.
+,13,46.9,healthy,0.946,0.912,-0.034,33.5,33,4,0.0,Full canopy (NDVI 0.95). Nothing to do.
+,299,46.9,dormant,0.118,0.137,0.019,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,371,46.9,dormant,0.161,0.1,-0.061,27.0,138,1,0.0,"Down for 138 days — more than three of its own 27-day cycles — with no regrowth. This field is out of rotation, not late."
+,272,46.8,dormant,0.108,0.119,0.011,28.5,133,2,0.0,"Down for 133 days — more than three of its own 28-day cycles — with no regrowth. This field is out of rotation, not late."
+,283,46.6,dormant,0.113,0.114,0.001,23.5,138,2,0.0,"Down for 138 days — more than three of its own 24-day cycles — with no regrowth. This field is out of rotation, not late."
+,384,46.6,dormant,0.105,0.103,-0.002,22.5,120,2,0.0,"Down for 120 days — more than three of its own 22-day cycles — with no regrowth. This field is out of rotation, not late."
+,490,46.6,dormant,0.103,0.1103,0.0073,25.5,130,2,0.0,"Down for 130 days — more than three of its own 26-day cycles — with no regrowth. This field is out of rotation, not late."
+,330,46.5,healthy,0.867,0.761,-0.106,30.0,25,5,0.0,Full canopy (NDVI 0.87). Nothing to do.
+,97,46.4,dormant,0.129,0.147,0.018,35.0,120,2,0.0,"Down for 120 days — more than three of its own 35-day cycles — with no regrowth. This field is out of rotation, not late."
+,285,46.3,dormant,0.153,0.2915,0.1385,20.0,125,3,0.0,"Down for 125 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,456,46.1,dormant,0.104,0.0975,-0.0065,20.0,105,1,0.0,"Down for 105 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,374,46.0,healthy,0.68,0.646,-0.034,32.0,25,3,0.0,Tracking its own cycle within tolerance.
+,475,46.0,recently_cut,0.289,0.762,0.473,36.0,32,4,0.0,"Cut 32 days ago on a 36-day cycle. The drop is on schedule — this is harvest, not stress."
+,151,45.9,dormant,0.097,0.105,0.008,45.0,138,1,0.0,"Down for 138 days — more than three of its own 45-day cycles — with no regrowth. This field is out of rotation, not late."
+,165,45.9,dormant,0.331,0.399,0.068,30.0,152,1,0.0,"Down for 152 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,443,45.9,dormant,0.114,,,,120,0,0.0,"Down for 120 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,146,45.7,healthy,0.744,0.9207,0.1767,30.0,37,3,0.0,Full canopy (NDVI 0.74). Nothing to do.
+,421,45.5,dormant,0.11,0.112,0.002,25.0,120,3,0.0,"Down for 120 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,341,45.3,healthy,0.566,0.4477,-0.1182,30.0,87,2,0.0,Tracking its own cycle within tolerance.
+,363,45.2,dormant,0.104,,,,137,0,0.0,"Down for 137 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,129,45.1,healthy,0.7,0.673,-0.027,40.0,17,4,0.0,Full canopy (NDVI 0.70). Nothing to do.
+,178,45.1,dormant,0.109,0.1125,0.0035,31.0,138,2,0.0,"Down for 138 days — more than three of its own 31-day cycles — with no regrowth. This field is out of rotation, not late."
+,322,45.0,dormant,0.105,0.109,0.004,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,135,44.7,recently_cut,0.358,0.58,0.222,30.0,17,5,0.0,"Cut 17 days ago on a 30-day cycle. The drop is on schedule — this is harvest, not stress."
+,339,44.6,recently_cut,0.442,0.548,0.106,30.0,15,5,0.0,"Cut 15 days ago on a 30-day cycle. The drop is on schedule — this is harvest, not stress."
+,268,44.2,dormant,0.107,0.1125,0.0055,30.0,125,2,0.0,"Down for 125 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,291,44.0,dormant,0.115,0.124,0.009,29.0,125,2,0.0,"Down for 125 days — more than three of its own 29-day cycles — with no regrowth. This field is out of rotation, not late."
+,344,43.9,dormant,0.11,0.1315,0.0215,26.0,138,2,0.0,"Down for 138 days — more than three of its own 26-day cycles — with no regrowth. This field is out of rotation, not late."
+,377,43.9,healthy,0.734,0.833,0.099,40.0,37,3,0.0,Full canopy (NDVI 0.73). Nothing to do.
+,515,43.8,dormant,0.138,0.14,0.002,20.0,85,1,0.0,"Down for 85 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,305,43.7,dormant,0.105,0.0935,-0.0115,35.0,147,1,0.0,"Down for 147 days — more than three of its own 35-day cycles — with no regrowth. This field is out of rotation, not late."
+,370,43.6,healthy,0.622,0.404,-0.218,40.0,17,3,0.0,Tracking its own cycle within tolerance.
+,200,43.5,recently_cut,0.2,0.7145,0.5145,40.0,30,1,0.0,"Cut 30 days ago on a 40-day cycle. The drop is on schedule — this is harvest, not stress."
+,152,43.3,healthy,0.627,0.463,-0.164,30.0,18,4,0.0,Tracking its own cycle within tolerance.
+,366,43.2,dormant,0.098,0.1005,0.0025,29.0,125,2,0.0,"Down for 125 days — more than three of its own 29-day cycles — with no regrowth. This field is out of rotation, not late."
+,449,43.2,dormant,0.098,0.1105,0.0125,43.0,138,1,0.0,"Down for 138 days — more than three of its own 43-day cycles — with no regrowth. This field is out of rotation, not late."
+,503,42.5,healthy,0.822,0.6995,-0.1225,31.0,32,4,0.0,Full canopy (NDVI 0.82). Nothing to do.
+,423,42.4,dormant,0.113,0.1165,0.0035,22.5,120,2,0.0,"Down for 120 days — more than three of its own 22-day cycles — with no regrowth. This field is out of rotation, not late."
+,451,42.3,healthy,0.637,0.611,-0.026,39.0,22,4,0.0,Tracking its own cycle within tolerance.
+,403,42.2,dormant,0.125,0.1323,0.0073,22.5,120,2,0.0,"Down for 120 days — more than three of its own 22-day cycles — with no regrowth. This field is out of rotation, not late."
+,428,42.0,healthy,0.931,0.6645,-0.2665,37.5,22,4,0.0,Full canopy (NDVI 0.93). Nothing to do.
+,427,41.8,dormant,0.104,0.102,-0.002,30.0,138,2,0.0,"Down for 138 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,175,41.7,healthy,0.935,0.854,-0.081,30.0,27,5,0.0,Full canopy (NDVI 0.94). Nothing to do.
+,358,41.2,dormant,0.101,0.0995,-0.0015,22.5,138,2,0.0,"Down for 138 days — more than three of its own 22-day cycles — with no regrowth. This field is out of rotation, not late."
+,500,41.2,dormant,0.096,0.104,0.008,35.0,130,1,0.0,"Down for 130 days — more than three of its own 35-day cycles — with no regrowth. This field is out of rotation, not late."
+,509,41.2,dormant,0.1,0.0985,-0.0015,20.0,130,1,0.0,"Down for 130 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,1,40.7,dormant,0.114,0.108,-0.006,35.0,165,1,0.0,"Down for 165 days — more than three of its own 35-day cycles — with no regrowth. This field is out of rotation, not late."
+,318,40.7,dormant,0.132,0.1745,0.0425,32.5,120,2,0.0,"Down for 120 days — more than three of its own 32-day cycles — with no regrowth. This field is out of rotation, not late."
+,308,40.5,dormant,0.108,0.115,0.007,23.5,138,2,0.0,"Down for 138 days — more than three of its own 24-day cycles — with no regrowth. This field is out of rotation, not late."
+,284,40.3,healthy,0.725,0.515,-0.21,37.0,20,3,0.0,Full canopy (NDVI 0.72). Nothing to do.
+,233,40.2,dormant,0.103,0.1035,0.0005,23.5,138,2,0.0,"Down for 138 days — more than three of its own 24-day cycles — with no regrowth. This field is out of rotation, not late."
+,124,39.8,healthy,0.863,0.412,-0.451,40.0,24,4,0.0,Full canopy (NDVI 0.86). Nothing to do.
+,182,39.8,recently_cut,0.449,0.6698,0.2208,30.0,17,4,0.0,"Cut 17 days ago on a 30-day cycle. The drop is on schedule — this is harvest, not stress."
+,391,39.8,dormant,0.112,0.113,0.001,27.0,138,1,0.0,"Down for 138 days — more than three of its own 27-day cycles — with no regrowth. This field is out of rotation, not late."
+,510,39.8,dormant,0.106,0.129,0.023,43.0,138,1,0.0,"Down for 138 days — more than three of its own 43-day cycles — with no regrowth. This field is out of rotation, not late."
+,271,39.6,healthy,0.822,0.863,0.041,36.5,37,2,0.0,Full canopy (NDVI 0.82). Nothing to do.
+,295,39.2,dormant,0.114,0.12,0.006,18.0,120,3,0.0,"Down for 120 days — more than three of its own 18-day cycles — with no regrowth. This field is out of rotation, not late."
+,493,39.2,dormant,0.102,0.1065,0.0045,18.0,120,1,0.0,"Down for 120 days — more than three of its own 18-day cycles — with no regrowth. This field is out of rotation, not late."
+,499,39.2,dormant,0.106,0.1187,0.0127,22.5,120,2,0.0,"Down for 120 days — more than three of its own 22-day cycles — with no regrowth. This field is out of rotation, not late."
+,516,39.2,dormant,0.099,0.094,-0.005,35.0,130,1,0.0,"Down for 130 days — more than three of its own 35-day cycles — with no regrowth. This field is out of rotation, not late."
+,329,39.0,dormant,0.119,0.116,-0.003,18.0,120,1,0.0,"Down for 120 days — more than three of its own 18-day cycles — with no regrowth. This field is out of rotation, not late."
+,109,38.8,healthy,0.854,0.782,-0.072,40.0,37,3,0.0,Full canopy (NDVI 0.85). Nothing to do.
+,294,38.8,recently_cut,0.434,0.626,0.192,30.0,2,6,0.0,"Cut 2 days ago on a 30-day cycle. The drop is on schedule — this is harvest, not stress."
+,90,38.7,healthy,0.894,0.863,-0.031,36.5,29,4,0.0,Full canopy (NDVI 0.89). Nothing to do.
+,115,38.6,healthy,0.51,0.604,0.094,30.0,18,5,0.0,Tracking its own cycle within tolerance.
+,250,38.6,dormant,0.109,0.115,0.006,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,236,38.4,dormant,0.118,0.1295,0.0115,18.0,120,1,0.0,"Down for 120 days — more than three of its own 18-day cycles — with no regrowth. This field is out of rotation, not late."
+,368,38.2,dormant,0.113,0.104,-0.009,18.0,120,3,0.0,"Down for 120 days — more than three of its own 18-day cycles — with no regrowth. This field is out of rotation, not late."
+,361,38.1,healthy,0.58,0.6725,0.0925,30.0,2,6,0.0,Tracking its own cycle within tolerance.
+,489,38.1,dormant,0.108,0.1207,0.0127,22.5,120,2,0.0,"Down for 120 days — more than three of its own 22-day cycles — with no regrowth. This field is out of rotation, not late."
+,148,37.9,recently_cut,0.44,0.3585,-0.0815,30.0,9,4,0.0,"Cut 9 days ago on a 30-day cycle. The drop is on schedule — this is harvest, not stress."
+,249,37.8,dormant,0.105,0.106,0.001,25.0,120,3,0.0,"Down for 120 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,359,37.8,dormant,0.1,0.117,0.017,18.0,120,3,0.0,"Down for 120 days — more than three of its own 18-day cycles — with no regrowth. This field is out of rotation, not late."
+,435,37.8,healthy,0.931,0.6405,-0.2905,30.0,37,3,0.0,Full canopy (NDVI 0.93). Nothing to do.
+,512,37.8,dormant,0.1,0.1108,0.0107,22.5,120,2,0.0,"Down for 120 days — more than three of its own 22-day cycles — with no regrowth. This field is out of rotation, not late."
+,281,37.6,dormant,0.11,0.114,0.004,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,254,37.5,dormant,0.123,0.138,0.015,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,506,37.5,dormant,0.106,0.135,0.029,25.0,120,3,0.0,"Down for 120 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,56,37.4,healthy,0.965,0.7913,-0.1737,30.0,22,5,0.0,Full canopy (NDVI 0.96). Nothing to do.
+,269,37.4,healthy,0.911,0.429,-0.482,31.5,47,2,0.0,Full canopy (NDVI 0.91). Nothing to do.
+,221,37.3,dormant,0.113,0.1265,0.0135,26.0,133,2,0.0,"Down for 133 days — more than three of its own 26-day cycles — with no regrowth. This field is out of rotation, not late."
+,258,37.3,dormant,0.134,0.157,0.023,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,235,37.2,dormant,0.126,0.144,0.018,18.0,120,1,0.0,"Down for 120 days — more than three of its own 18-day cycles — with no regrowth. This field is out of rotation, not late."
+,415,37.2,dormant,0.112,0.108,-0.004,32.0,133,1,0.0,"Down for 133 days — more than three of its own 32-day cycles — with no regrowth. This field is out of rotation, not late."
+,502,37.1,dormant,0.119,0.128,0.009,25.0,120,3,0.0,"Down for 120 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,64,37.0,healthy,0.963,0.934,-0.029,32.5,33,4,0.0,Full canopy (NDVI 0.96). Nothing to do.
+,241,37.0,dormant,0.115,0.126,0.011,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,395,37.0,dormant,0.115,0.1345,0.0195,37.5,125,2,0.0,"Down for 125 days — more than three of its own 38-day cycles — with no regrowth. This field is out of rotation, not late."
+,400,37.0,healthy,0.864,0.797,-0.067,27.5,37,4,0.0,Full canopy (NDVI 0.86). Nothing to do.
+,74,36.9,healthy,0.846,0.713,-0.133,40.0,32,3,0.0,Full canopy (NDVI 0.85). Nothing to do.
+,245,36.9,dormant,0.112,0.131,0.019,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,298,36.9,dormant,0.122,0.1237,0.0018,32.5,120,2,0.0,"Down for 120 days — more than three of its own 32-day cycles — with no regrowth. This field is out of rotation, not late."
+,328,36.9,dormant,0.104,0.102,-0.002,25.0,120,3,0.0,"Down for 120 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,394,36.9,dormant,0.11,0.141,0.031,25.0,120,3,0.0,"Down for 120 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,75,36.8,recently_cut,0.368,0.488,0.12,42.5,17,4,0.0,"Cut 17 days ago on a 42-day cycle. The drop is on schedule — this is harvest, not stress."
+,193,36.8,dormant,0.107,0.107,0.0,20.0,125,3,0.0,"Down for 125 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,373,36.8,healthy,0.841,0.4437,-0.3972,40.0,27,2,0.0,Full canopy (NDVI 0.84). Nothing to do.
+,9,36.7,recently_cut,0.156,0.6125,0.4565,45.0,52,3,0.0,"Cut 52 days ago on a 45-day cycle. The drop is on schedule — this is harvest, not stress."
+,25,36.6,healthy,0.922,0.72,-0.202,40.0,57,3,0.0,Full canopy (NDVI 0.92). Nothing to do.
+,84,36.6,healthy,0.88,0.6215,-0.2585,37.5,32,4,0.0,Full canopy (NDVI 0.88). Nothing to do.
+,132,36.5,dormant,0.116,0.107,-0.009,45.0,137,1,0.0,"Down for 137 days — more than three of its own 45-day cycles — with no regrowth. This field is out of rotation, not late."
+,309,36.5,healthy,0.893,0.918,0.025,27.0,57,3,0.0,Full canopy (NDVI 0.89). Nothing to do.
+,315,36.5,dormant,0.121,0.136,0.015,30.0,125,2,0.0,"Down for 125 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,433,36.5,dormant,0.106,0.1073,0.0013,22.5,120,2,0.0,"Down for 120 days — more than three of its own 22-day cycles — with no regrowth. This field is out of rotation, not late."
+,27,36.4,healthy,0.919,0.7465,-0.1725,37.5,32,4,0.0,Full canopy (NDVI 0.92). Nothing to do.
+,61,36.4,healthy,0.896,0.8035,-0.0925,35.0,32,3,0.0,Full canopy (NDVI 0.90). Nothing to do.
+,76,36.4,healthy,0.478,0.5955,0.1175,25.0,17,1,0.0,Tracking its own cycle within tolerance.
+,19,36.3,recently_cut,0.338,0.645,0.307,30.0,17,3,0.0,"Cut 17 days ago on a 30-day cycle. The drop is on schedule — this is harvest, not stress."
+,504,36.3,dormant,0.104,0.093,-0.011,33.0,147,1,0.0,"Down for 147 days — more than three of its own 33-day cycles — with no regrowth. This field is out of rotation, not late."
+,260,36.2,recently_cut,0.424,0.567,0.143,30.0,17,5,0.0,"Cut 17 days ago on a 30-day cycle. The drop is on schedule — this is harvest, not stress."
+,518,36.2,dormant,0.1,0.092,-0.008,20.0,125,1,0.0,"Down for 125 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,103,36.1,healthy,0.936,0.7428,-0.1933,30.0,32,3,0.0,Full canopy (NDVI 0.94). Nothing to do.
+,105,36.0,recently_cut,0.368,0.364,-0.004,40.0,17,4,0.0,"Cut 17 days ago on a 40-day cycle. The drop is on schedule — this is harvest, not stress."
+,418,36.0,healthy,0.89,0.654,-0.236,40.0,27,4,0.0,Full canopy (NDVI 0.89). Nothing to do.
+,28,35.9,recently_cut,0.369,0.82,0.451,36.0,5,4,0.0,"Cut 5 days ago on a 36-day cycle. The drop is on schedule — this is harvest, not stress."
+,237,35.5,healthy,0.821,0.804,-0.017,28.5,20,4,0.0,Full canopy (NDVI 0.82). Nothing to do.
+,306,35.5,dormant,0.119,0.1325,0.0135,30.0,125,2,0.0,"Down for 125 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,364,35.5,healthy,0.718,0.659,-0.059,37.5,22,4,0.0,Full canopy (NDVI 0.72). Nothing to do.
+,514,35.5,dormant,0.125,0.1113,-0.0137,30.5,120,2,0.0,"Down for 120 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,96,35.4,healthy,0.454,0.387,-0.067,40.0,17,3,0.0,Tracking its own cycle within tolerance.
+,273,35.4,dormant,0.113,0.131,0.018,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,342,35.4,healthy,0.581,0.4875,-0.0935,40.0,17,3,0.0,Tracking its own cycle within tolerance.
+,460,35.4,dormant,0.109,0.1235,0.0145,30.5,120,2,0.0,"Down for 120 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,60,35.3,healthy,0.732,0.379,-0.353,30.0,40,4,0.0,Full canopy (NDVI 0.73). Nothing to do.
+,34,35.2,dormant,0.136,0.1338,-0.0023,19.0,145,2,0.0,"Down for 145 days — more than three of its own 19-day cycles — with no regrowth. This field is out of rotation, not late."
+,35,35.2,recently_cut,0.174,0.6587,0.4847,33.0,17,5,0.0,"Cut 17 days ago on a 33-day cycle. The drop is on schedule — this is harvest, not stress."
+,66,35.2,healthy,0.921,0.871,-0.05,35.0,27,3,0.0,Full canopy (NDVI 0.92). Nothing to do.
+,131,35.2,recently_cut,0.286,0.697,0.411,35.0,22,5,0.0,"Cut 22 days ago on a 35-day cycle. The drop is on schedule — this is harvest, not stress."
+,256,35.2,dormant,0.105,0.106,0.001,25.0,120,3,0.0,"Down for 120 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,278,35.2,dormant,0.11,0.142,0.032,23.0,110,3,0.0,"Down for 110 days — more than three of its own 23-day cycles — with no regrowth. This field is out of rotation, not late."
+,331,35.2,healthy,0.914,0.705,-0.209,40.0,27,4,0.0,Full canopy (NDVI 0.91). Nothing to do.
+,51,35.1,recently_cut,0.358,0.3665,0.0085,42.5,17,4,0.0,"Cut 17 days ago on a 42-day cycle. The drop is on schedule — this is harvest, not stress."
+,266,35.1,dormant,0.111,0.124,0.013,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,275,35.1,dormant,0.107,0.1165,0.0095,30.0,125,2,0.0,"Down for 125 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,312,35.1,dormant,0.106,0.116,0.01,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,229,35.0,dormant,0.108,0.124,0.016,30.0,125,2,0.0,"Down for 125 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,296,35.0,dormant,0.139,0.161,0.022,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,494,35.0,dormant,0.127,0.125,-0.002,20.0,85,1,0.0,"Down for 85 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,228,34.8,dormant,0.11,0.126,0.016,30.0,125,2,0.0,"Down for 125 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,265,34.7,dormant,0.118,0.139,0.021,25.0,120,3,0.0,"Down for 120 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,297,34.7,dormant,0.128,0.15,0.022,23.0,110,3,0.0,"Down for 110 days — more than three of its own 23-day cycles — with no regrowth. This field is out of rotation, not late."
+,333,34.7,dormant,0.105,0.1,-0.005,26.0,138,2,0.0,"Down for 138 days — more than three of its own 26-day cycles — with no regrowth. This field is out of rotation, not late."
+,251,34.6,dormant,0.114,0.14,0.026,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,311,34.6,dormant,0.126,0.147,0.021,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,441,34.6,dormant,0.097,0.1023,0.0053,22.5,120,2,0.0,"Down for 120 days — more than three of its own 22-day cycles — with no regrowth. This field is out of rotation, not late."
+,257,34.4,dormant,0.136,0.154,0.018,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,280,34.4,dormant,0.123,0.154,0.031,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,420,34.4,recently_cut,0.263,0.6893,0.4263,35.0,17,4,0.0,"Cut 17 days ago on a 35-day cycle. The drop is on schedule — this is harvest, not stress."
+,507,34.4,dormant,0.104,0.1225,0.0185,22.5,120,2,0.0,"Down for 120 days — more than three of its own 22-day cycles — with no regrowth. This field is out of rotation, not late."
+,16,34.2,recently_cut,0.292,0.473,0.181,30.0,17,4,0.0,"Cut 17 days ago on a 30-day cycle. The drop is on schedule — this is harvest, not stress."
+,406,34.1,dormant,0.111,0.106,-0.005,27.0,138,1,0.0,"Down for 138 days — more than three of its own 27-day cycles — with no regrowth. This field is out of rotation, not late."
+,219,33.9,dormant,0.106,0.126,0.02,26.0,133,2,0.0,"Down for 133 days — more than three of its own 26-day cycles — with no regrowth. This field is out of rotation, not late."
+,239,33.5,dormant,0.132,0.146,0.014,30.0,125,2,0.0,"Down for 125 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,286,33.4,dormant,0.11,0.136,0.026,23.0,110,3,0.0,"Down for 110 days — more than three of its own 23-day cycles — with no regrowth. This field is out of rotation, not late."
+,289,33.3,dormant,0.128,0.15,0.022,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,224,33.2,dormant,0.125,0.143,0.018,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,50,33.0,recently_cut,0.311,0.4615,0.1505,30.0,17,4,0.0,"Cut 17 days ago on a 30-day cycle. The drop is on schedule — this is harvest, not stress."
+,232,33.0,dormant,0.121,0.111,-0.01,27.0,122,1,0.0,"Down for 122 days — more than three of its own 27-day cycles — with no regrowth. This field is out of rotation, not late."
+,227,32.9,dormant,0.118,0.136,0.018,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,145,32.8,dormant,0.082,,,,182,0,0.0,"Down for 182 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,244,32.8,dormant,0.124,0.134,0.01,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,261,32.8,dormant,0.108,0.117,0.009,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,492,32.4,dormant,0.116,,,,105,0,0.0,"Down for 105 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,505,32.0,dormant,0.105,0.1045,-0.0005,20.0,85,1,0.0,"Down for 85 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,238,31.8,healthy,0.56,0.128,-0.432,25.0,120,3,0.0,Tracking its own cycle within tolerance.
+,191,31.7,dormant,0.116,0.113,-0.003,20.0,125,3,0.0,"Down for 125 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,122,31.1,healthy,0.738,0.7745,0.0365,35.0,22,4,0.0,Full canopy (NDVI 0.74). Nothing to do.
+,203,31.1,dormant,0.11,0.1085,-0.0015,20.0,125,3,0.0,"Down for 125 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,243,31.1,dormant,0.13,0.144,0.014,25.0,120,3,0.0,"Down for 120 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,110,30.9,healthy,0.943,0.9225,-0.0205,35.0,32,3,0.0,Full canopy (NDVI 0.94). Nothing to do.
+,396,30.3,dormant,0.207,0.195,-0.012,22.0,110,1,0.0,"Down for 110 days — more than three of its own 22-day cycles — with no regrowth. This field is out of rotation, not late."
+,267,29.6,dormant,0.128,0.149,0.021,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,248,29.5,dormant,0.215,,,,182,0,0.0,"Down for 182 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,234,29.4,dormant,0.11,0.1275,0.0175,36.5,125,2,0.0,"Down for 125 days — more than three of its own 36-day cycles — with no regrowth. This field is out of rotation, not late."
+,262,29.4,dormant,0.111,,,,132,0,0.0,"Down for 132 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,430,29.4,dormant,0.117,0.12,0.003,22.0,88,1,0.0,"Down for 88 days — more than three of its own 22-day cycles — with no regrowth. This field is out of rotation, not late."
+,270,29.2,dormant,0.117,,,,137,0,0.0,"Down for 137 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,264,29.0,dormant,0.132,0.144,0.012,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,338,28.9,dormant,0.166,0.258,0.092,22.5,138,2,0.0,"Down for 138 days — more than three of its own 22-day cycles — with no regrowth. This field is out of rotation, not late."
+,210,28.5,dormant,0.108,0.112,0.004,25.0,120,3,0.0,"Down for 120 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,98,27.6,recently_cut,0.408,0.3987,-0.0092,30.0,10,6,0.0,"Cut 10 days ago on a 30-day cycle. The drop is on schedule — this is harvest, not stress."
+,231,27.6,dormant,0.108,0.127,0.019,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,255,27.5,dormant,0.114,0.129,0.015,20.0,120,3,0.0,"Down for 120 days — more than three of its own 20-day cycles — with no regrowth. This field is out of rotation, not late."
+,323,27.0,dormant,0.112,0.104,-0.008,35.0,147,1,0.0,"Down for 147 days — more than three of its own 35-day cycles — with no regrowth. This field is out of rotation, not late."
+,246,26.9,dormant,0.113,0.1355,0.0225,32.5,120,2,0.0,"Down for 120 days — more than three of its own 32-day cycles — with no regrowth. This field is out of rotation, not late."
+,253,26.8,dormant,0.106,0.1235,0.0175,32.5,120,2,0.0,"Down for 120 days — more than three of its own 32-day cycles — with no regrowth. This field is out of rotation, not late."
+,354,26.6,recently_cut,0.296,0.3625,0.0665,35.0,17,5,0.0,"Cut 17 days ago on a 35-day cycle. The drop is on schedule — this is harvest, not stress."
+,87,26.5,recently_cut,0.402,0.7833,0.3812,27.5,17,4,0.0,"Cut 17 days ago on a 28-day cycle. The drop is on schedule — this is harvest, not stress."
+,58,26.4,healthy,0.846,0.572,-0.274,32.0,18,5,0.0,Full canopy (NDVI 0.85). Nothing to do.
+,15,26.3,dormant,0.092,0.0735,-0.0185,30.0,152,1,0.0,"Down for 152 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,41,26.2,healthy,0.912,0.86,-0.052,38.0,24,3,0.0,Full canopy (NDVI 0.91). Nothing to do.
+,95,26.2,healthy,0.61,0.3375,-0.2725,42.5,17,4,0.0,Tracking its own cycle within tolerance.
+,343,26.2,healthy,0.906,0.6945,-0.2115,40.0,27,4,0.0,Full canopy (NDVI 0.91). Nothing to do.
+,44,25.9,healthy,0.906,0.932,0.026,32.0,30,3,0.0,Full canopy (NDVI 0.91). Nothing to do.
+,10,25.7,healthy,0.89,0.8355,-0.0545,37.5,37,4,0.0,Full canopy (NDVI 0.89). Nothing to do.
+,53,25.3,healthy,0.851,0.847,-0.004,45.0,47,3,0.0,Full canopy (NDVI 0.85). Nothing to do.
+,352,24.3,dormant,0.144,0.146,0.002,18.0,120,3,0.0,"Down for 120 days — more than three of its own 18-day cycles — with no regrowth. This field is out of rotation, not late."
+,464,24.2,healthy,0.758,0.4065,-0.3515,40.0,20,5,0.0,Full canopy (NDVI 0.76). Nothing to do.
+,8,22.2,healthy,0.883,0.7025,-0.1805,35.0,37,4,0.0,Full canopy (NDVI 0.88). Nothing to do.
+,220,21.6,recently_cut,0.42,0.82,0.4,45.0,5,3,0.0,"Cut 5 days ago on a 45-day cycle. The drop is on schedule — this is harvest, not stress."
+,92,21.5,healthy,0.495,0.5028,0.0078,33.0,17,5,0.0,Tracking its own cycle within tolerance.
+,3,20.0,healthy,0.944,0.643,-0.301,38.5,20,4,0.0,Full canopy (NDVI 0.94). Nothing to do.
+,176,19.8,dormant,0.086,0.091,0.005,33.0,150,1,0.0,"Down for 150 days — more than three of its own 33-day cycles — with no regrowth. This field is out of rotation, not late."
+,101,19.7,dormant,0.186,0.149,-0.037,25.0,125,2,0.0,"Down for 125 days — more than three of its own 25-day cycles — with no regrowth. This field is out of rotation, not late."
+,18,19.5,healthy,0.874,0.4795,-0.3945,35.0,37,4,0.0,Full canopy (NDVI 0.87). Nothing to do.
+,471,18.5,healthy,0.735,,,,105,0,0.0,Full canopy (NDVI 0.73). Nothing to do.
+,79,17.0,healthy,0.769,0.8935,0.1245,30.0,37,3,0.0,Full canopy (NDVI 0.77). Nothing to do.
+,45,16.5,healthy,0.546,0.5725,0.0265,30.0,17,2,0.0,Tracking its own cycle within tolerance.
+,47,16.1,recently_cut,0.436,0.5102,0.0742,30.0,17,4,0.0,"Cut 17 days ago on a 30-day cycle. The drop is on schedule — this is harvest, not stress."
+,213,12.4,off_cycle,0.135,,,,,0,0.0,"Below 0.45 but no complete cycle observed yet, so this is a watch item rather than a call."
+,197,12.2,healthy,0.875,,,,125,0,0.0,Full canopy (NDVI 0.88). Nothing to do.
+,487,11.6,dormant,0.154,,,,165,0,0.0,"Down for 165 days — more than three of its own 30-day cycles — with no regrowth. This field is out of rotation, not late."
+,26,11.5,healthy,0.887,0.5085,-0.3785,36.0,20,4,0.0,Full canopy (NDVI 0.89). Nothing to do.
+,2,10.4,healthy,0.861,0.6705,-0.1905,35.0,37,3,0.0,Full canopy (NDVI 0.86). Nothing to do.

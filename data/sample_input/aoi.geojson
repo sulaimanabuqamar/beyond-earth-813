@@ -1,0 +1,24 @@
+{
+  "type": "FeatureCollection",
+  "name": "beyond_earth_aoi_tabarjal",
+  "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tabarjal, Wadi as-Sirhan, Al Jouf, Saudi Arabia",
+        "note": "The area of interest the notebook searched. Replace this and the matching bbox in run_config.json to run the method somewhere else."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [38.15, 29.75],
+          [38.85, 29.75],
+          [38.85, 30.30],
+          [38.15, 30.30],
+          [38.15, 29.75]
+        ]]
+      }
+    }
+  ]
+}

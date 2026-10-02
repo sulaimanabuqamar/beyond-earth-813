@@ -1,0 +1,20 @@
+<section id="hyper-overturn" data-transition="push" style="background:#171410; color:#F5F1E7; font-family:'IBM Plex Sans', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:36px">
+<p style="font-size:24px; letter-spacing:4px; text-transform:uppercase; color:#E4744F; font-weight:600">Then we checked it properly</p>
+<h2 style="font-family:Fraunces, Georgia, serif; font-size:68px; font-weight:600; line-height:1.1; width:1560px">Only two EMIT scenes cleared the matching rule &mdash; so we held one out</h2>
+<table style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:30px; color:#F5F1E7; padding:18px 22px">
+<tr><th style="width:40%; text-align:left; color:#BFB6A4; font-size:26px">Trained on one scene, tested on the other</th><th style="width:10%; color:#BFB6A4; font-size:26px">n</th><th style="width:14%; color:#BFB6A4; font-size:26px">recover</th><th style="width:12%; color:#BFB6A4; font-size:26px">NDVI</th><th style="width:12%; color:#BFB6A4; font-size:26px">+ narrow</th><th style="width:12%; color:#BFB6A4; font-size:26px">+ all</th></tr>
+<tr style="background:#231F18"><td style="text-align:left">Tested on 18 February</td><td>29</td><td>3</td><td style="color:#7FC061"><b>0.962</b></td><td style="color:#E4744F">0.372</td><td style="color:#E4744F">0.436</td></tr>
+<tr><td style="text-align:left">Tested on 22 July</td><td>257</td><td>19</td><td style="color:#7FC061"><b>0.793</b></td><td style="color:#E4744F">0.629</td><td style="color:#E4744F">0.655</td></tr>
+</table>
+<div style="display:flex; gap:32px; align-items:flex-start">
+<div style="flex:1; background:#231F18; padding:36px; border-left:8px solid #E4744F; border-radius:0 16px 16px 0">
+<p style="font-size:38px; line-height:1.3; color:#F5F1E7; font-family:Fraunces, Georgia, serif; font-weight:600">The +0.12 was the model recognising which scene a row came from.</p>
+</div>
+<div style="flex:1; display:flex; flex-direction:column; gap:16px">
+<p style="font-size:29px; line-height:1.45; color:#BFB6A4">A February acquisition does not look like a July one. With two scenes, random folds cannot separate plant physiology from atmospheric conditions.</p>
+<p style="font-size:29px; line-height:1.45; color:#BFB6A4">Adding the narrow bands makes prediction <b style="color:#F5F1E7">worse</b> on a scene the model has not seen &mdash; in one case worse than a coin flip.</p>
+</div>
+</div>
+<p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#6A6355">2 of 60 EMIT granules over this area matched a Sentinel-2 day within two days. Leave-one-scene-out needs six to eight.</p>
+<aside>This is the slide that should win technical credibility. We found the artefact in our own headline result before shipping it. The check took four lines of code and is the difference between a finding and an artefact. Say that we report the narrow bands as measurement and rank nothing with them.</aside>
+</section>

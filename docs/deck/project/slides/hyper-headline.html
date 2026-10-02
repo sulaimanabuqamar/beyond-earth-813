@@ -1,0 +1,21 @@
+<section id="hyper-headline" data-section="The hyperspectral test, and the leakage check that overturned it" data-transition="fade" style="background:#F5F1E7; color:#171410; font-family:'IBM Plex Sans', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:36px">
+<p style="font-size:24px; letter-spacing:4px; text-transform:uppercase; color:#1A5F79; font-weight:600">The hyperspectral question</p>
+<h2 style="font-family:Fraunces, Georgia, serif; font-size:72px; font-weight:600; line-height:1.1; width:1560px">Our own best idea, set up as a fair test</h2>
+<p style="font-size:32px; line-height:1.45; color:#574F41; width:1560px">Sentinel-2 has no band at 531, 570 or 970 nm. NASA's EMIT has 285 of them. The claim was that narrow bands could separate a cut field from a stressed one where NDVI cannot. We tested it as a prediction contest: labels taken from what each field did <b>15&ndash;45 days afterwards</b>, rows restricted to fields already low on the day, folds split by field, twenty repeats.</p>
+<svg aria-label="Bar chart of cross-validated AUC: NDVI only 0.781, plus narrow bands 0.897, plus all EMIT features 0.903." width="1664" height="300" viewBox="0 0 1664 300">
+<rect x="0" y="0" width="1664" height="300" fill="#FBF8F1"></rect>
+<text x="40" y="74" font-family="IBM Plex Sans" font-size="30" fill="#574F41">NDVI only</text>
+<text x="40" y="164" font-family="IBM Plex Sans" font-size="30" fill="#574F41">+ narrow bands</text>
+<text x="40" y="254" font-family="IBM Plex Sans" font-size="30" fill="#574F41">+ all EMIT features</text>
+<line x1="420" y1="30" x2="420" y2="278" stroke="#D6CDB8" stroke-width="2"></line>
+<rect x="420" y="46" width="700" height="40" rx="6" fill="#5583AE"></rect>
+<rect x="420" y="136" width="953" height="40" rx="6" fill="#1A5F79"></rect>
+<rect x="420" y="226" width="966" height="40" rx="6" fill="#1A5F79"></rect>
+<text x="1144" y="76" font-family="IBM Plex Sans" font-size="32" font-weight="600" fill="#171410">0.781</text>
+<text x="1397" y="166" font-family="IBM Plex Sans" font-size="32" font-weight="600" fill="#171410">0.897</text>
+<text x="1410" y="256" font-family="IBM Plex Sans" font-size="32" font-weight="600" fill="#171410">0.903</text>
+</svg>
+<p style="font-size:32px; line-height:1.45; color:#171410; width:1560px">Better in <b>20 of 20 repeats</b>, and it survives removing EMIT's own NDVI &mdash; so it is not merely a second NDVI measurement. On this evidence the differentiator is proven.</p>
+<p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#8A8170">286 field-observations &middot; 22 recover, 264 stay low &middot; cross-validated AUC, mean of 20 repeats &middot; from the run with NASA Earthdata credentials supplied</p>
+<aside>Deliver this slide straight, as if the finding stands. The next slide is the turn. Do not hedge here — the contrast is the point.</aside>
+</section>

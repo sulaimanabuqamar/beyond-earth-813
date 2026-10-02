@@ -1,0 +1,34 @@
+{
+  "aoi_bbox_wgs84": [38.15, 29.75, 38.85, 30.30],
+  "projected_crs": "EPSG:32637",
+  "season": ["2026-02-01", "2026-09-08"],
+  "sentinel2": {
+    "collection": "sentinel-2-l2a",
+    "source": "planetary",
+    "source_options": ["earthsearch", "planetary"],
+    "max_cloud_pct": 20,
+    "resolution_m_field_detection": 20,
+    "resolution_m_ndvi_series": 60
+  },
+  "field_detection": {
+    "min_hectares": 10,
+    "max_hectares": 400
+  },
+  "model": {
+    "low_ndvi": 0.45,
+    "high_ndvi": 0.70,
+    "min_peak_prominence": 0.20,
+    "min_cycle_days": 18,
+    "max_cycle_days": 60,
+    "default_cycle_days": 30,
+    "overdue_factor": 1.30,
+    "dormant_factor": 3.0
+  },
+  "emit": {
+    "collection": "EMITL2ARFL",
+    "max_cloud_pct": 20,
+    "max_granules": 8,
+    "match_days": 2,
+    "future_window_days": [15, 45]
+  }
+}

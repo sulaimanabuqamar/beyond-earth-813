@@ -1,0 +1,38 @@
+# Pinned to the exact versions this Proof of Concept was built and tested against.
+# Verified on Python 3.11.15: a clean `pip install -r requirements.txt` followed by
+# `python3 tests/verify.py` passes all six checks. Later releases will probably work;
+# these are the ones we can vouch for.
+
+# --- Earth observation: catalogue search and lazy raster loading -----------------
+odc-stac==0.5.3
+pystac-client==0.9.0
+planetary-computer==1.0.0      # only needed for SOURCE = "planetary"
+earthaccess==0.17.0            # only needed for the optional EMIT section
+rasterio==1.4.4
+
+# --- geometry and field detection ------------------------------------------------
+geopandas==1.1.4
+shapely==2.1.2
+scikit-image==0.26.0
+
+# --- arrays, tables, maths -------------------------------------------------------
+numpy==2.4.4
+pandas==3.0.2
+scipy==1.17.1
+xarray==2026.7.0
+dask==2026.8.0                 # xr.open_dataset(chunks=...) in the EMIT section needs it
+
+# --- netCDF / HDF5, for the EMIT granules ---------------------------------------
+h5netcdf==1.8.1
+h5py==3.16.0                   # h5netcdf's backend; not pulled in automatically
+
+# --- the prediction contest in the hyperspectral section -------------------------
+scikit-learn==1.8.0
+
+# --- figures ---------------------------------------------------------------------
+matplotlib==3.10.9
+
+# --- the API ---------------------------------------------------------------------
+fastapi==0.141.1
+uvicorn==0.46.0
+httpx==0.28.1                  # tests/api_smoke.py uses the FastAPI test client

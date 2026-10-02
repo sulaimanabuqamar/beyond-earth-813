@@ -1,0 +1,29 @@
+<section id="method" data-section="A cycle-aware priority queue built from each field's own history" data-transition="fade" style="background:#F5F1E7; color:#171410; font-family:'IBM Plex Sans', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:40px">
+<p style="font-size:24px; letter-spacing:4px; text-transform:uppercase; color:#1A5F79; font-weight:600">The tool</p>
+<h2 style="font-family:Fraunces, Georgia, serif; font-size:72px; font-weight:600; line-height:1.1; width:1560px">Judge every field against its own rhythm, not against its neighbours</h2>
+<div style="display:flex; gap:24px">
+<div style="flex:1; display:flex; flex-direction:column; gap:14px; background:#FBF8F1; padding:36px; border:1px solid #D6CDB8; border-radius:16px">
+<p style="font-size:26px; color:#1A5F79; font-weight:600">01</p>
+<h3 style="font-size:30px; font-weight:600">Find the cuts</h3>
+<p style="font-size:26px; line-height:1.45; color:#574F41">A peak counts only if it stands 0.20 NDVI above the low points on both sides. That prominence test separates a real cut from a cloudy pixel.</p>
+</div>
+<div style="flex:1; display:flex; flex-direction:column; gap:14px; background:#FBF8F1; padding:36px; border:1px solid #D6CDB8; border-radius:16px">
+<p style="font-size:26px; color:#1A5F79; font-weight:600">02</p>
+<h3 style="font-size:30px; font-weight:600">Measure its cycle</h3>
+<p style="font-size:26px; line-height:1.45; color:#574F41">Median spacing between that field's peaks, bounded to 18&ndash;60 days. Fewer than two clean peaks and we say so rather than invent one.</p>
+</div>
+<div style="flex:1; display:flex; flex-direction:column; gap:14px; background:#FBF8F1; padding:36px; border:1px solid #D6CDB8; border-radius:16px">
+<p style="font-size:26px; color:#1A5F79; font-weight:600">03</p>
+<h3 style="font-size:30px; font-weight:600">Expect a value</h3>
+<p style="font-size:26px; line-height:1.45; color:#574F41">What did <i>this field</i> read this many days after each of its previous cuts? A low-vigour field is judged against itself.</p>
+</div>
+<div style="flex:1; display:flex; flex-direction:column; gap:14px; background:#171410; padding:36px; border-radius:16px">
+<p style="font-size:26px; color:#6FB8D4; font-weight:600">04</p>
+<h3 style="font-size:30px; font-weight:600; color:#F5F1E7">Rank the deficit</h3>
+<p style="font-size:26px; line-height:1.45; color:#BFB6A4">Priority = how far behind its own history, times hectares. Exactly zero when a field is on schedule.</p>
+</div>
+</div>
+<p style="font-size:32px; line-height:1.45; color:#574F41; width:1500px">Because priority is zero for a field that is on schedule, <b>a freshly cut field can never enter the queue.</b> That is the entire design.</p>
+<p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#8A8170">Runs on free Sentinel-2. No hyperspectral data required.</p>
+<aside>Four steps, and the fourth is the one that matters. Land the last line: the tool is built so that the failure mode on slide four is structurally impossible, not merely less likely.</aside>
+</section>

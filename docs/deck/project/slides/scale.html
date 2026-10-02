@@ -1,0 +1,23 @@
+<section id="scale" data-transition="fade" style="background:#FBF8F1; color:#171410; font-family:'IBM Plex Sans', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:44px">
+<p style="font-size:24px; letter-spacing:4px; text-transform:uppercase; color:#1A5F79; font-weight:600">What we processed</p>
+<h2 style="font-family:Fraunces, Georgia, serif; font-size:72px; font-weight:600; line-height:1.1; width:1400px">Field boundaries are derived, not drawn</h2>
+<div style="display:flex; gap:20px">
+<div style="flex:1; display:flex; flex-direction:column; gap:10px"><p style="font-family:Fraunces, Georgia, serif; font-size:88px; font-weight:600; line-height:1; color:#1A5F79">518</p><p style="font-size:26px; color:#574F41">pivots detected</p></div>
+<div style="flex:1; display:flex; flex-direction:column; gap:10px"><p style="font-family:Fraunces, Georgia, serif; font-size:88px; font-weight:600; line-height:1; color:#1A5F79">24,038</p><p style="font-size:26px; color:#574F41">hectares</p></div>
+<div style="flex:1; display:flex; flex-direction:column; gap:10px"><p style="font-family:Fraunces, Georgia, serif; font-size:88px; font-weight:600; line-height:1; color:#1A5F79">82</p><p style="font-size:26px; color:#574F41">cloud-screened days</p></div>
+<div style="flex:1; display:flex; flex-direction:column; gap:10px"><p style="font-family:Fraunces, Georgia, serif; font-size:88px; font-weight:600; line-height:1; color:#1A5F79">33,078</p><p style="font-size:26px; color:#574F41">field-days of NDVI</p></div>
+<div style="flex:1; display:flex; flex-direction:column; gap:10px"><p style="font-family:Fraunces, Georgia, serif; font-size:88px; font-weight:600; line-height:1; color:#1A5F79">0</p><p style="font-size:26px; color:#574F41">credentials required</p></div>
+</div>
+<div style="display:flex; gap:32px">
+<div style="flex:1; display:flex; flex-direction:column; gap:12px; background:#F5F1E7; padding:36px; border-radius:16px">
+<h3 style="font-size:30px; font-weight:600">Detection is a shape test</h3>
+<p style="font-size:27px; line-height:1.45; color:#574F41">NDVI above 0.30, then keep only what is shaped like a pivot: 10&ndash;400 ha, eccentricity at most 0.75, solidity at least 0.85. No boundaries were supplied and none were drawn by hand.</p>
+</div>
+<div style="flex:1; display:flex; flex-direction:column; gap:12px; background:#F5F1E7; padding:36px; border-radius:16px">
+<h3 style="font-size:30px; font-weight:600">Detect at peak green</h3>
+<p style="font-size:27px; line-height:1.45; color:#574F41">The date is chosen automatically: the greenest fully covered day of the season. This run chose 13 April and found 518 fields. An earlier run over the same area detected in July instead and found only 328, because fields that were mid-cut that day fell below the threshold.</p>
+</div>
+</div>
+<p style="position:absolute; left:128px; bottom:64px; font-size:24px; color:#8A8170">Sentinel-2 L2A, cloud &lt; 20%, mosaicked by solar day, SCL classes 0/1/3/8/9/10/11 removed. 20 m for detection, 60 m for the series.</p>
+<aside>The 518-versus-328 difference is worth pausing on: it is the same confound appearing in the detection step, and it is why the detection date is chosen by the algorithm rather than by us.</aside>
+</section>

@@ -1,0 +1,6 @@
+{
+  "name": "beyond-earth-tests",
+  "private": true,
+  "description": "Headless checks for the dashboard and the model parity harness.",
+  "devDependencies": { "jsdom": "^26.0.0" }
+}

@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Node (the test harness pulls jsdom)
+node_modules/
+
+# macOS / editors
+.DS_Store
+.vscode/
+.idea/
+
+# Jupyter / Anaconda scratch
+anaconda_projects/
+
+# Local Earthdata credentials must never be committed
+.netrc
+.env
+*.netrc
+
+# Large intermediate rasters a run may leave behind
+*.tif
+*.tiff
+*.nc
+*.zarr/
+
+# internal planning notes, not part of the deliverable
+docs/submission-checklist.md
+notes/
